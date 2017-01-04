@@ -1,0 +1,5 @@
+.container {
+  border: 1px solid #a67f42;
+  display: flex;
+  justify-content: center;
+}
