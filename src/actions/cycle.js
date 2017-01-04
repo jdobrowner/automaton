@@ -1,8 +1,7 @@
 import { CYCLE } from './types';
 
-function cycle() {
+export default () => {
 	return {
-		type: CYCLE;
+		type: CYCLE
 	}
 }
-

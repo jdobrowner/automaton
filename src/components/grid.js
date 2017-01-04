@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import CellDown from './cell-down';
 import CellUp from './cell-up';
+import cycle from '../actions/cycle';
 
-export default class Grid extends Component {
+class Grid extends Component {
 	constructor() {
 		super();
 		this.generateGrid = this.generateGrid.bind(this);
+		this.tick = this.tick.bind(this);
 	}
 	generateGrid() {
 		let cells = [];
 		const size = 30;
+		const grid = this.props.pattern;
 
 		for (let m = 0; m < size; m++) {
 			for (let n = 0; n < size; n++) {
 				const keyDown = `${n}-${m}`;
 				const keyUp = `${n}+${m}`;
-				cells.push( <CellDown n={n} m={m} key={keyDown} /> );
-				cells.push( <CellUp n={n} m={m} key={keyUp} /> );
+				cells.push( <CellDown n={n} m={m} key={keyDown} boolState={grid[keyDown]} /> );
+				cells.push( <CellUp n={n} m={m} key={keyUp} boolState={grid[keyUp]} /> );
 			}
 		}
 		return cells;
 	}
+	tick() {
+    this.props.cycle();
+		console.log('tick');
+  }
+	componentDidMount() {
+    this.interval = setInterval(this.tick, 5000);
+  }
+	componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 	render() {
 		return (
 		<svg className="grid"
@@ -33,7 +49,14 @@ export default class Grid extends Component {
 		</svg>
 	)
 	}
-	
 }
 
+function mapStateToProps(state) {
+  return { pattern: state.pattern };
+}
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ cycle: cycle }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Grid);
