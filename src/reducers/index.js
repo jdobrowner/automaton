@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import cycleReducer from './cycleReducer';
 
 const rootReducer = combineReducers({
-  // reducers here
+  grid: cycleReducer
 });
 
 export default rootReducer;
