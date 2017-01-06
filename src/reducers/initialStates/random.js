@@ -15,5 +15,9 @@ export default () => {
 }
 
 function randomValue() {
-	return Math.random() < 0.5;
+	const rand = Math.random() * 4;
+	if ( rand < 1 ) return 0;
+	else if ( rand < 2 ) return 1;
+	else if ( rand < 3 ) return 2;
+	else return 4;
 }

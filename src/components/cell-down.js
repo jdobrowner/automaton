@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 
-// export default class Cell extends Component {
-// 	constructor() {
-// 		super();
-// 	}
-// 	render() {
-// 		const n = parseInt(this.props.n);
-// 		const m = parseInt(this.props.m);
-// 		console.log(this.props);
-// 		return <polygon points={getPoints(n, m)} stroke="black" strokeWidth="1" fill="none" />
-// 	}
+export default class Cell extends Component {
+	constructor() {
+		super();
+		this.onCellClicked = this.onCellClicked.bind(this);
+	}
+	onCellClicked() {
+		console.log(this.props.ident);
+	}
+	render() {
+		const n = this.props.n;
+		const m = this.props.m;
+		const cellState = getColor(this.props.colorState);
+		return <polygon className="cell" points={getPointsDownTriangle(n, m)} fill={cellState} onClick={this.onCellClicked} />
+	}
+}
 
-
+// export default (props) => {
+// 	const cellState = props.boolState ? '#c69517' : 'white';
+// 	return <polygon className="cell" points={getPointsDownTriangle(props.n, props.m)} fill={cellState} />
 // }
 
-export default (props) => {
-	const cellState = props.boolState ? 'cell colored' : 'cell';
-	return <polygon points={getPointsDownTriangle(props.n, props.m)} className={cellState} stroke="black" strokeWidth="1" />
+function getColor(n) {
+	switch (n) {
+		case 0: return '#F3FBF1';
+		case 1: return '#D1E4D1';
+		case 2: return '#98B4A6';
+		case 3: return '#64868E';
+		default: return '#F3FBF1';
+	}
 }
 
 
@@ -27,7 +39,7 @@ function getPointsDownTriangle(n, m) {
 	let [ Lx, Ly, Bx, By, Rx, Ry ] = [ n*unit, y*m*unit, (n+0.5)*unit, y*(m+1)*unit, (n+1)*unit, y*m*unit ];
 
 	if ( m % 2 === 1) {
-		const shift = 0.5*unit;
+			const shift = 0.5*unit;
 			Lx += shift;
 			Bx += shift;
 			Rx += shift;

@@ -21,18 +21,17 @@ class Grid extends Component {
 			for (let n = 0; n < size; n++) {
 				const keyDown = `${n}-${m}`;
 				const keyUp = `${n}+${m}`;
-				cells.push( <CellDown n={n} m={m} key={keyDown} boolState={grid[keyDown]} /> );
-				cells.push( <CellUp n={n} m={m} key={keyUp} boolState={grid[keyUp]} /> );
+				cells.push( <CellDown n={n} m={m} key={keyDown} ident={keyDown} colorState={grid[keyDown]} /> );
+				cells.push( <CellUp n={n} m={m} key={keyUp} ident={keyUp} colorState={grid[keyUp]} /> );
 			}
 		}
 		return cells;
 	}
 	tick() {
     this.props.cycle();
-		console.log('tick');
   }
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 5000);
+    this.interval = setInterval(this.tick, 600);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);

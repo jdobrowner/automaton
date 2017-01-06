@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 
-// export default class Cell extends Component {
-// 	constructor() {
-// 		super();
-// 	}
-// 	render() {
-// 		const n = parseInt(this.props.n);
-// 		const m = parseInt(this.props.m);
-// 		console.log(this.props);
-// 		return <polygon points={getPoints(n, m)} stroke="black" strokeWidth="1" fill="none" />
-// 	}
+export default class Cell extends Component {
+	constructor() {
+		super();
+		this.onCellClicked = this.onCellClicked.bind(this);
+	}
+	onCellClicked() {
+		console.log(this.props.ident);
+	}
+	render() {
+		const n = this.props.n;
+		const m = this.props.m;
+		const cellState = getColor(this.props.colorState);
+		return <polygon className="cell" points={getPointsUpTriangle(n, m)} fill={cellState} onClick={this.onCellClicked}/>
+	}
+}
 
-
+// export default (props) => {
+// 	const cellState = props.boolState ? '#c69517' : 'white';
+// 	return <polygon className="cell" points={getPointsUpTriangle(props.n, props.m)} fill={cellState} />
 // }
 
-export default (props) => {
-	const cellState = props.boolState ? 'cell colored' : 'cell';
-	return <polygon points={getPointsUpTriangle(props.n, props.m)} className={cellState} stroke="black" strokeWidth="1" />
+function getColor(n) {
+	switch (n) {
+		case 0: return '#F3FBF1';
+		case 1: return '#D1E4D1';
+		case 2: return '#98B4A6';
+		case 3: return '#64868E';
+		default: return '#F3FBF1';
+	}
 }
 
 

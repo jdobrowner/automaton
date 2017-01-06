@@ -42,11 +42,11 @@ function triangleDown(n, m, apex) {
       const num4 = apex.x - apex.y;
 
       if ((num1 >= num2 ) && (num3 < num4)) {
-        return true;
+        return 1;
       }
     }
   }
-  return false;
+  return 0;
 }
 
 function triangleUp(n, m, apex) {
@@ -60,9 +60,9 @@ function triangleUp(n, m, apex) {
       const num4 = apex.x - apex.y;
 
       if ((num1 >= num2 ) && (num3 <= num4)) {
-        return true;
+        return 2;
       }
     }
   }
-  return false;
+  return 0;
 }
