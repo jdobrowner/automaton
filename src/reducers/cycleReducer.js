@@ -1,10 +1,8 @@
 import { CYCLE } from '../actions/types';
-import triforce from './initialStates/triforce';
-import triangle from './initialStates/triangle';
-import oneTriangle from './initialStates/oneTriangle';
+import initialStates from './initialStates/index';
 import automate from './rulesets/automate';
 
-export default function cycle(state = oneTriangle(), action) {
+export default function cycle(state = initialStates.triforce(), action) {
 	switch (action.type) {
 		case CYCLE:
 			return automate(state);

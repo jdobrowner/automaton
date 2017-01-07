@@ -24,8 +24,26 @@ class Sidebar extends Component {
         </div>
         <h2 className="user-controls">controls</h2>
           <h3 className="options color">color</h3>
-            <div className="option button">red</div>
-            <div className="option button">blue</div>
+            <div className="option button green">
+              <div>
+                <div className="color-sample" id="green0"></div>
+                <div className="color-sample" id="green1"></div>
+              </div>
+              <div>  
+                <div className="color-sample" id="green2"></div>
+                <div className="color-sample" id="green3"></div>
+              </div>
+            </div>
+            <div className="option button purple">
+               <div>
+                <div className="color-sample" id="purple0"></div>
+                <div className="color-sample" id="purple1"></div>
+              </div>
+              <div>  
+                <div className="color-sample" id="purple2"></div>
+                <div className="color-sample" id="purple3"></div>
+              </div>
+            </div>  
             <div className="option button">yellow</div>
           <h3 className="options speed">speed</h3>
             <div className="option button">slow medium fast</div>

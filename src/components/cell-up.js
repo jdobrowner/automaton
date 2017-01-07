@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { unit } from '../constants';
+import colors from '../colors';
 
 export default class Cell extends Component {
 	constructor() {
@@ -17,21 +18,9 @@ export default class Cell extends Component {
 	}
 }
 
-// export default (props) => {
-// 	const cellState = getColor(props.colorState);
-// 	return <polygon className="cell" points={getPointsUpTriangle(props.n, props.m)} fill={cellState} />
-// }
-
-function getColor(n) {
-	switch (n) {
-		case 0: return '#F3FBF1';
-		case 1: return '#D1E4D1';
-		case 2: return '#98B4A6';
-		case 3: return '#64868E';
-		default: return '#F3FBF1';
-	}
+function getColor(n = 0) {
+	return colors.green[n];
 }
-
 
 function getPointsUpTriangle(n, m) {
 	const y = Math.sqrt(3)/2;
