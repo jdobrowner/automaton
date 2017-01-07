@@ -12,7 +12,11 @@ class Grid extends Component {
 		super();
 		this.generateGrid = this.generateGrid.bind(this);
 		this.tick = this.tick.bind(this);
+		// this.setPatternState = this.setPatternState.bind(this);
 	}
+	// setPatternState() {
+	// 	this.setState({ cells: this.generateGrid() });
+	// }
 	generateGrid() {
 		let cells = [];
 		const grid = this.props.pattern;
@@ -21,15 +25,25 @@ class Grid extends Component {
 			for (let n = 0; n < size; n++) {
 				const keyDown = `${n}-${m}`;
 				const keyUp = `${n}+${m}`;
-				cells.push( <CellDown n={n} m={m} key={keyDown} ident={keyDown} colorState={grid[keyDown]} /> );
-				cells.push( <CellUp n={n} m={m} key={keyUp} ident={keyUp} colorState={grid[keyUp]} /> );
+				cells.push( <CellDown n={n} m={m} key={keyDown} colorState={grid[keyDown]} /> );
+				cells.push( <CellUp n={n} m={m} key={keyUp} colorState={grid[keyUp]} /> );
 			}
 		}
 		return cells;
 	}
 	tick() {
     this.props.cycle();
+
+		const newCells = [];
+		this.state.cells.forEach((child) => {
+			const newColor = this.props.pattern[child.key];
+			newCells.push(React.cloneElement(child, { colorState: newColor }));
+		});
+		this.setState({cells: newCells})
   }
+	componentWillMount() {
+		this.setState({ cells: this.generateGrid() });
+	}
 	componentDidMount() {
     this.interval = setInterval(this.tick, 1000);
   }
@@ -44,7 +58,7 @@ class Grid extends Component {
 		        width="1145" height="983"
 		        xmlns="http://www.w3.org/2000/svg">
 
-		        {this.generateGrid()}
+		        {this.state.cells}
 		</svg>
 	)
 	}
