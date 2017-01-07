@@ -6,6 +6,7 @@ function automate(state) {
 
 	for (let m = 0; m < size; m++) {
 		for (let n = 0; n < size; n++) {
+
 			const keyDown = `${n}-${m}`;
 			const keyUp = `${n}+${m}`;
 
@@ -14,8 +15,6 @@ function automate(state) {
       const b = state[`${n}+${m-1}`];
       const D = state[`${n}-${m+1}`];
 
-      // one cell is being double refered to in c/C
-      // one cell is being ignored in b/B
       let c, d, B, C;
       if ( m%2 === 0) {
         c = state[`${n-1}+${m}`];

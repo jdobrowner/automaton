@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:jdobrowner/automaton.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js & npm run watch:css",
+    "start": "npm run build:css && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js & npm run watch:css",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "build:css": "rm -f build/style.css && lessc style/style.less build/style.css",
