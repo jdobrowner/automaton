@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Explanation from './explanation';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import explain from '../actions/toggleExplanation';
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
   constructor () {
     super();
+    this.state = { showExplanation: false };
     this.toggleExplanation = this.toggleExplanation.bind(this);
-    this.state = {hidden: true};
   }
   toggleExplanation() {
-    const isHidden = !this.state.hidden;
-    console.log(isHidden);
-    this.setState({hidden: isHidden});
-    // if (isHidden) return <Explanation className="hidden" />;
-    // else return <Explanation />
+    const showExplanation = !this.props.showExplanation;
+    console.log(showExplanation);
+    this.props.explain();
   }
   render() {
     return (
@@ -40,3 +40,13 @@ export default class Sidebar extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { showExplanation: state.showExplanation };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ explain: explain }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

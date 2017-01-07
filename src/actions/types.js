@@ -1,3 +1,4 @@
 const CYCLE = 'cycle';
+const EXPLAIN = 'explain';
 
-module.exports = { CYCLE };
+module.exports = { CYCLE, EXPLAIN };

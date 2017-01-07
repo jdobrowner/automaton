@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { unit } from '../constants';
 
-export default class Cell extends Component {
-	constructor() {
-		super();
-		this.onCellClicked = this.onCellClicked.bind(this);
-	}
-	onCellClicked() {
-		console.log(this.props.ident);
-	}
-	render() {
-		const n = this.props.n;
-		const m = this.props.m;
-		const cellState = getColor(this.props.colorState);
-		return <polygon className="cell" points={getPointsUpTriangle(n, m)} fill={cellState} onClick={this.onCellClicked}/>
-	}
-}
-
-// export default (props) => {
-// 	const cellState = props.boolState ? '#c69517' : 'white';
-// 	return <polygon className="cell" points={getPointsUpTriangle(props.n, props.m)} fill={cellState} />
+// export default class Cell extends Component {
+// 	constructor() {
+// 		super();
+// 		this.onCellClicked = this.onCellClicked.bind(this);
+// 	}
+// 	onCellClicked() {
+// 		console.log(this.props.ident);
+// 	}
+// 	render() {
+// 		const n = this.props.n;
+// 		const m = this.props.m;
+// 		const cellState = getColor(this.props.colorState);
+// 		return <polygon className="cell" points={getPointsUpTriangle(n, m)} fill={cellState} onClick={this.onCellClicked}/>
+// 	}
 // }
+
+export default (props) => {
+	const cellState = getColor(props.colorState);
+	return <polygon className="cell" points={getPointsUpTriangle(props.n, props.m)} fill={cellState} />
+}
 
 function getColor(n) {
 	switch (n) {
