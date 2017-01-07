@@ -1,6 +1,7 @@
+import { size } from '../../constants';
+
 export default () => {
   let state = {};
-  const size = 30;
 
   for (let m = 0; m < size; m++) {
 		for (let n = 0; n < size; n++) {
@@ -11,7 +12,7 @@ export default () => {
 			state[keyDown] = 0;
 			state[keyUp] = 0;
 
-      if ((n === 15) && (m === 14)) state[keyUp] = 3;
+      if ((n === 40) && (m === 40)) state[keyDown] = 3;
 		}
 	}
   return state;

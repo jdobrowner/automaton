@@ -1,6 +1,7 @@
+import { size } from '../../constants';
+
 export default () => {
   let state = {};
-  const size = 30;
 
   for (let m = 0; m < size; m++) {
 		for (let n = 0; n < size; n++) {

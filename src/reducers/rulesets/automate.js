@@ -1,8 +1,8 @@
 import * as rule from './rules';
+import { size } from '../../constants';
 
 function automate(state) {
   let grid = {};
-	const size = 30;
 
 	for (let m = 0; m < size; m++) {
 		for (let n = 0; n < size; n++) {

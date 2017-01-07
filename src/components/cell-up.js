@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { unit } from '../constants';
 
 export default class Cell extends Component {
 	constructor() {
@@ -33,7 +34,6 @@ function getColor(n) {
 
 
 function getPointsUpTriangle(n, m) {
-	const unit = 30;
 	const y = Math.sqrt(3)/2;
 
 	let [ Lx, Ly, Tx, Ty, Rx, Ry ] = [ (n+0.5)*unit, (m+1)*y*unit, (n+1)*unit, y*m*unit, (n+1.5)*unit, (m+1)*y*unit ];

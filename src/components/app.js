@@ -1,8 +1,12 @@
 import React from 'react';
-import Grid from './grid';
+import GridContainer from './grid-container';
+import Sidebar from './sidebar';
 
 export default () => {
-	return (
-		<Grid />
-	)
+  return (
+    <div className="app">
+      <Sidebar />
+      <GridContainer />
+    </div>
+  )
 }

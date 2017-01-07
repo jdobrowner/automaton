@@ -1,13 +1,39 @@
-@blue: #a67f42;
+@import 'reset.less';
 
-.container {
-  border: 1px solid @blue;
+@blue: #a67f42;
+@default: #F3FBF1;
+
+html {
+  background-color: @default;
+}
+
+body {
+  font-family: 'Nova Mono', monospace;
+  box-sizing: border-box;
+}
+
+body, .container {
+  margin: 0px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+.app {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.sidebar {
 }
 
 .cell {
-  stroke: grey;
+  stroke: @default;
   stroke-width: 0.5;
 }
 
@@ -15,8 +41,31 @@
   fill: #c69517;
 }
 
-
+.grid {
+  margin: 30px auto;
+  border: 1px solid grey;
+}
 
 
 // .grid polygon:hover {fill: black};
 .grid polygon:active {fill: red};
+
+.button {
+  cursor: pointer;
+  border: 1px solid grey;
+  padding: 5px;
+  margin: 20px 0;
+}
+
+.user-controls {
+  font-size: 22px;
+}
+
+.option {
+  display: inline-block;
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
+}

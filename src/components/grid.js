@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import CellDown from './cell-down';
 import CellUp from './cell-up';
 import cycle from '../actions/cycle';
+import { size } from '../constants';
 
 class Grid extends Component {
 	constructor() {
@@ -14,7 +15,6 @@ class Grid extends Component {
 	}
 	generateGrid() {
 		let cells = [];
-		const size = 30;
 		const grid = this.props.pattern;
 
 		for (let m = 0; m < size; m++) {
@@ -31,7 +31,7 @@ class Grid extends Component {
     this.props.cycle();
   }
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 600);
+    this.interval = setInterval(this.tick, 1000);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);
@@ -41,7 +41,7 @@ class Grid extends Component {
 		<svg className="grid"
 				version="1.1"
 		      	baseProfile="full"
-		        width="1000" height="1000"
+		        width="1145" height="983"
 		        xmlns="http://www.w3.org/2000/svg">
 
 		        {this.generateGrid()}
