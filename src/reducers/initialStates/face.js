@@ -12,46 +12,49 @@ export default () => {
 			state[keyDown] = 0;
 			state[keyUp] = 0;
 
-	//eyes		
-	if ((n === 29) && (m === 30)) state[keyUp] = 3;
-	if ((n === 30) && (m === 30)) state[keyDown] = 3;
-    if ((n === 30) && (m === 30)) state[keyUp] = 3;
-    if ((n === 29) && (m === 31)) state[keyDown] = 3;
-    if ((n === 30) && (m === 31)) state[keyUp] = 3;
-    if ((n === 30) && (m === 31)) state[keyDown] = 3;
+	const a = 21;
+	const b = 22;
+	const c = 42;
+	const d = 43;
+	const e = 16;
+	const f = 17;
 
-    if ((n === 49) && (m === 30)) state[keyUp] = 3;
-    if ((n === 50) && (m === 30)) state[keyDown] = 3;
-    if ((n === 50) && (m === 30)) state[keyUp] = 3;
-    if ((n === 49) && (m === 31)) state[keyDown] = 3;
-    if ((n === 50) && (m === 31)) state[keyUp] = 3;
-    if ((n === 50) && (m === 31)) state[keyDown] = 3;
+	//eyes
+	if ((n === a) && (m === e)) state[keyUp] = 3;
+	if ((n === b) && (m === e)) state[keyDown] = 3;
+    if ((n === b) && (m === e)) state[keyUp] = 3;
+    if ((n === a) && (m === f)) state[keyDown] = 3;
+    if ((n === b) && (m === f)) state[keyUp] = 3;
+    if ((n === b) && (m === f)) state[keyDown] = 3;
+
+    if ((n === c) && (m === e)) state[keyUp] = 3;
+    if ((n === d) && (m === e)) state[keyDown] = 3;
+    if ((n === d) && (m === e)) state[keyUp] = 3;
+    if ((n === c) && (m === f)) state[keyDown] = 3;
+    if ((n === d) && (m === f)) state[keyUp] = 3;
+    if ((n === d) && (m === f)) state[keyDown] = 3;
+
+
+	// if ((n === 29) && (m === 30)) state[keyUp] = 3;
+	// if ((n === 30) && (m === 30)) state[keyDown] = 3;
+ //    if ((n === 30) && (m === 30)) state[keyUp] = 3;
+ //    if ((n === 29) && (m === 31)) state[keyDown] = 3;
+ //    if ((n === 30) && (m === 31)) state[keyUp] = 3;
+ //    if ((n === 30) && (m === 31)) state[keyDown] = 3;
+
+ //    if ((n === 49) && (m === 30)) state[keyUp] = 3;
+ //    if ((n === 50) && (m === 30)) state[keyDown] = 3;
+ //    if ((n === 50) && (m === 30)) state[keyUp] = 3;
+ //    if ((n === 49) && (m === 31)) state[keyDown] = 3;
+ //    if ((n === 50) && (m === 31)) state[keyUp] = 3;
+ //    if ((n === 50) && (m === 31)) state[keyDown] = 3;
 	
 	//smile  
-	if ((n === 35) && (m === 49)) state[keyDown] = 3;
-	if ((n === 36) && (m === 49)) state[keyUp] = 3;
-
-	if ((n === 36) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 36) && (m === 50)) state[keyUp] = 3;
-	if ((n === 37) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 37) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 38) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 38) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 39) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 39) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 40) && (m === 50)) state[keyDown] = 3;
-  	if ((n === 40) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 41) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 41) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 42) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 42) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 43) && (m === 50)) state[keyDown] = 3;
- 	if ((n === 43) && (m === 50)) state[keyUp] = 3;
- 	if ((n === 44) && (m === 50)) state[keyDown] = 3;
-
-
- 	if ((n === 44) && (m === 49)) state[keyUp] = 3;
- 	if ((n === 44) && (m === 49)) state[keyDown] = 3;
+	for (var i = 20; i < 40; i++) {
+		if ((n === i) && (m === 40)) state[keyDown] = 3;
+		if ((n === i) && (m === 40)) state[keyUp] = 3;
+		if ((n === 40) && (m === 40)) state[keyDown] = 3;
+	}
 		}
 	}
   return state;
