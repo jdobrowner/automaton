@@ -5,25 +5,26 @@ import { bindActionCreators } from 'redux';
 import CellDown from './cell-down';
 import CellUp from './cell-up';
 import cycle from '../actions/cycle';
+import pause from '../actions/pause';
 import { size } from '../constants';
 
 class Grid extends Component {
 	constructor() {
 		super();
-		this.state = { paused: false };
+		// this.state = { speed: 600 };
 		this.generateGrid = this.generateGrid.bind(this);
 		this.tick = this.tick.bind(this);
 		this.onGridClick = this.onGridClick.bind(this);
 	}
 	onGridClick() {
-		const isPaused = !this.state.paused;
+		const isPaused = !this.props.paused;
 		if (isPaused) {
 			clearInterval(this.interval);
 		}
 		else {
-			this.interval = setInterval(this.tick, 300);
+			this.interval = setInterval(this.tick, this.props.speed);
 		}
-		this.setState({ paused: isPaused });
+		this.props.pause();
 	}
 	generateGrid() {
 		let cells = [];
@@ -40,7 +41,13 @@ class Grid extends Component {
 		return cells;
 	}
 	tick() {
-		if (!this.state.paused) {
+		if (this.state.speed !== this.props.speed) {
+			clearInterval(this.interval);
+			this.interval = setInterval(this.tick, this.props.speed);
+			this.setState({ speed: this.props.speed });
+		}
+
+		if (!this.props.paused) {
 			this.props.cycle();
 
 			const newCells = [];
@@ -57,14 +64,16 @@ class Grid extends Component {
 		this.setState({ cells: this.generateGrid() });
 	}
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 600);
+		const speed = this.props.speed;
+		this.setState({ speed: speed })
+		setTimeout( () => { this.interval = setInterval(this.tick, speed) }, 200);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);
   }
 	render() {
 		return (
-		<svg className="grid" onClick={this.onGridClick}
+		<svg className="grid" onMouseDown={this.onGridClick}
 				version="1.1"
 		      	baseProfile="full"
 		        width="970" height="832"
@@ -77,11 +86,15 @@ class Grid extends Component {
 }
 
 function mapStateToProps(state) {
-  return { pattern: state.pattern };
+  return {
+						pattern: state.pattern,
+						speed: state.speed,
+						paused: state.paused
+	 				};
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ cycle: cycle }, dispatch);
+  return bindActionCreators({ cycle: cycle, pause: pause }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);
