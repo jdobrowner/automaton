@@ -3,6 +3,7 @@ import { size } from '../../constants';
 
 function automate(state) {
   let grid = {};
+  let ruleset = rule.set11;
 
   // getting the map of grid cells to react key values
   // and having each cell know of its neighbor's states
@@ -20,6 +21,19 @@ function automate(state) {
       if ( q >= size) q = 0;
       if ( P < 0 ) P = size - 1;
       if ( Q >= size) Q = 0;
+
+      //  _______
+      //  \     /
+      //   \   /
+      //    \ /
+      //
+      //
+      // A is self-reffering
+      // B is 2/3 pi
+      // D is 4/3 pi
+      // C is 2 pi
+      // capital is up triangles
+      // lowercase is down triangles
 
       const a = state[keyDown];
       const A = state[keyUp];
@@ -40,8 +54,8 @@ function automate(state) {
         C = state[`${p}-${m}`];
       }
 
-			grid[keyDown] = rule.set2(a,b,c,d);
-			grid[keyUp] = rule.set2(A,B,C,D);
+			grid[keyDown] = ruleset(a,b,c,d);
+			grid[keyUp] = ruleset(A,B,C,D);
 		}
 	}
 	return grid;

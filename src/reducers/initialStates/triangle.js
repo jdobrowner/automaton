@@ -33,7 +33,7 @@ function getValueUp(n, m) {
       }
     }
   }
-  return false;
+  return 0;
 }
 
 function getValueDown(n, m) {
@@ -50,5 +50,5 @@ function getValueDown(n, m) {
       }
     }
   }
-  return false;
+  return 0;
 }
