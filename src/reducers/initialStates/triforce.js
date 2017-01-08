@@ -18,17 +18,17 @@ export default () => {
 
 function getValueUp(n, m) {
   const triangleHeight = 10;
-  const apex1 = { x : 15, y : 5 };
-  const apex2 = { x : 10, y : 15 };
-  const apex3 = { x : 20, y : 15 };
+  const apex1 = { x : 40, y : 31 };
+  const apex2 = { x : 35, y : 41 };
+  const apex3 = { x : 45, y : 41 };
   return triangleUp(n, m, apex1) || triangleUp(n, m, apex2) || triangleUp(n, m, apex3);
 }
 
 function getValueDown(n, m) {
   const triangleHeight = 10;
-  const apex1 = { x : 15, y : 5 };
-  const apex2 = { x : 10, y : 15 };
-  const apex3 = { x : 20, y : 15 };
+  const apex1 = { x : 40, y : 31 };
+  const apex2 = { x : 35, y : 41 };
+  const apex3 = { x : 45, y : 41 };
   return triangleDown(n, m, apex1) || triangleDown(n, m, apex2) || triangleDown(n, m, apex3);
 }
 
