@@ -10,13 +10,21 @@ import { size } from '../constants';
 class Grid extends Component {
 	constructor() {
 		super();
+		this.state = { paused: false };
 		this.generateGrid = this.generateGrid.bind(this);
 		this.tick = this.tick.bind(this);
-		// this.setPatternState = this.setPatternState.bind(this);
+		this.onGridClick = this.onGridClick.bind(this);
 	}
-	// setPatternState() {
-	// 	this.setState({ cells: this.generateGrid() });
-	// }
+	onGridClick() {
+		const isPaused = !this.state.paused;
+		if (isPaused) {
+			clearInterval(this.interval);
+		}
+		else {
+			this.interval = setInterval(this.tick, 300);
+		}
+		this.setState({ paused: isPaused });
+	}
 	generateGrid() {
 		let cells = [];
 		const grid = this.props.pattern;
@@ -32,29 +40,31 @@ class Grid extends Component {
 		return cells;
 	}
 	tick() {
-    this.props.cycle();
+		if (!this.state.paused) {
+			this.props.cycle();
 
-		const newCells = [];
-		const oldCells = this.state.cells;
-		const length = oldCells.length;
-		for (let i = 0; i < length; i++) {
-			const newColor = this.props.pattern[oldCells[i].key];
-			newCells.push(React.cloneElement(oldCells[i], { colorState: newColor }));
+			const newCells = [];
+			const oldCells = this.state.cells;
+			const length = oldCells.length;
+			for (let i = 0; i < length; i++) {
+				const newColor = this.props.pattern[oldCells[i].key];
+				newCells.push(React.cloneElement(oldCells[i], { colorState: newColor }));
+			}
+			this.setState({cells: newCells});
 		}
-		this.setState({cells: newCells});
   }
 	componentWillMount() {
 		this.setState({ cells: this.generateGrid() });
 	}
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 1000);
+    this.interval = setInterval(this.tick, 300);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);
   }
 	render() {
 		return (
-		<svg className="grid"
+		<svg className="grid" onClick={this.onGridClick}
 				version="1.1"
 		      	baseProfile="full"
 		        width="1145" height="983"

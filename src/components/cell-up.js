@@ -10,7 +10,6 @@ export default class Cell extends Component {
 		return !(nextProps.colorState === this.props.colorState);
 	}
 	render() {
-		console.log(this.props.n);
 		const n = this.props.n;
 		const m = this.props.m;
 		const cellState = getColor(this.props.colorState);
