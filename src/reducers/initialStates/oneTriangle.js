@@ -12,7 +12,7 @@ export default () => {
 			state[keyDown] = 0;
 			state[keyUp] = 0;
 
-      if ((n === 40) && (m === 40)) state[keyDown] = 3;
+      if ((n === size/2) && (m === size/2)) state[keyDown] = 3;
 		}
 	}
   return state;

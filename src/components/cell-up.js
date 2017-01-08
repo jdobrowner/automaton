@@ -13,12 +13,12 @@ export default class Cell extends Component {
 		const n = this.props.n;
 		const m = this.props.m;
 		const cellState = getColor(this.props.colorState);
-		return <polygon points={getPointsUpTriangle(n, m)} fill={cellState} />
+		return <polygon points={getPointsUpTriangle(n, m)} fill={cellState} stroke={colors.southwest[0]} strokeWidth='0.5'/>
 	}
 }
 
 function getColor(n = 0) {
-	return colors.green[n];
+	return colors.southwest[n];
 }
 
 function getPointsUpTriangle(n, m) {

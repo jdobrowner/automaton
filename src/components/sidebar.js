@@ -44,7 +44,16 @@ class Sidebar extends Component {
                 <div className="color-sample" id="purple3"></div>
               </div>
             </div>  
-            <div className="option button">yellow</div>
+            <div className="option button southwest">
+              <div>
+                <div className="color-sample" id="southwest0"></div>
+                <div className="color-sample" id="southwest1"></div>
+              </div>
+              <div>  
+                <div className="color-sample" id="southwest2"></div>
+                <div className="color-sample" id="southwest3"></div>
+              </div>
+            </div>
           <h3 className="options speed">speed</h3>
             <div className="option button">slow medium fast</div>
           <h3 className="options initial-state">initial state</h3>

@@ -46,7 +46,7 @@ function getValueDown(n, m) {
       const num4 = topApex.x - topApex.y;
 
       if ((num1 >= num2 ) && (num3 < num4)) {
-        return 3;
+        return 2;
       }
     }
   }
