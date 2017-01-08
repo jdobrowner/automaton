@@ -35,11 +35,13 @@ class Grid extends Component {
     this.props.cycle();
 
 		const newCells = [];
-		this.state.cells.forEach((child) => {
-			const newColor = this.props.pattern[child.key];
-			newCells.push(React.cloneElement(child, { colorState: newColor }));
-		});
-		this.setState({cells: newCells})
+		const oldCells = this.state.cells;
+		const length = oldCells.length;
+		for (let i = 0; i < length; i++) {
+			const newColor = this.props.pattern[oldCells[i].key];
+			newCells.push(React.cloneElement(oldCells[i], { colorState: newColor }));
+		}
+		this.setState({cells: newCells});
   }
 	componentWillMount() {
 		this.setState({ cells: this.generateGrid() });
