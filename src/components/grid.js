@@ -57,7 +57,7 @@ class Grid extends Component {
 		this.setState({ cells: this.generateGrid() });
 	}
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 100);
+    this.interval = setInterval(this.tick, 600);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);
@@ -67,7 +67,7 @@ class Grid extends Component {
 		<svg className="grid" onClick={this.onGridClick}
 				version="1.1"
 		      	baseProfile="full"
-		        width="980" height="832"
+		        width="970" height="832"
 		        xmlns="http://www.w3.org/2000/svg">
 
 		        {this.state.cells}

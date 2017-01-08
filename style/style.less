@@ -1,17 +1,24 @@
 @import 'reset.less';
 
 @blue: #a67f42;
-@default: #F3FBF1 ;
+@default: #FAEBCD ;
 
 @g0: #F3FBF1;
 @g1: #D1E4D1;
 @g2: #98B4A6;
 @g3: #64868E;
 
-@p0: #fbf8ef;
-@p1: #e5d2d7;
-@p2: #b497ad;
+@p0: #efe9e0;
+@p1: #d1bbbb;
+@p2: #d0a18b;
 @p3: #8c6378;
+
+@b0: #DFE0D4;
+
+@sw0: #FAEBCD;
+@sw1: #F7C873;
+@sw2: #d07b69;
+@sw3: #5a5858;
 
 /*@p0: #F5D7A1;
 @p1: #F0A28E;
@@ -25,7 +32,7 @@ html {
 body {
   font-family: 'Nova Mono', monospace;
   box-sizing: border-box;
-  color: #64868E;
+  color: #5a5858;
 }
 
 body, .container {
@@ -48,6 +55,7 @@ h3 {
 .sidebar {
   position: absolute;
   left: 1%;
+  background-color: @default;
 }
 
 .cell {
@@ -61,7 +69,7 @@ h3 {
 
 .grid {
   margin: 30px auto;
-  border: 1px solid grey;
+  border: 1px solid @sw2;
 }
 
 
@@ -97,7 +105,7 @@ h3 {
   background: rgba(255, 255, 255, 0.8);
 }
 
-.green, .purple {
+.green, .purple, .southwest {
   padding: 0;
   font-size: 0;
   -ms-transform: rotate(45deg); /* IE 9 */
@@ -141,4 +149,20 @@ h3 {
 
 #purple3 {
   background-color: @p3;
+}
+
+#southwest0 {
+  background-color: @sw0;
+}
+
+#southwest1 {
+  background-color: @sw1;
+}
+
+#southwest2 {
+  background-color: @sw2;
+}
+
+#southwest3 {
+  background-color: @sw3;
 }
