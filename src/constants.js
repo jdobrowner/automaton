@@ -1,4 +1,4 @@
-const size = 81;
-const unit = 14;
+const size = 64;
+const unit = 15;
 
 module.exports = {size, unit};
