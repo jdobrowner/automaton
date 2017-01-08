@@ -3,7 +3,8 @@ import { size } from '../../constants';
 
 function automate(state) {
   let grid = {};
-  let ruleset = rule.set17;
+  let ruleset = rule.set2;
+
 
   // getting the map of grid cells to react key values
   // and having each cell know of its neighbor's states
