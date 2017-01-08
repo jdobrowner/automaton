@@ -1,9 +1,10 @@
 import * as rule from './rules';
+import * as rulemon from './rules-monika';
 import { size } from '../../constants';
 
 function automate(state) {
   let grid = {};
-  let ruleset = rule.set11;
+  let ruleset = rulemon.setA;
 
   // getting the map of grid cells to react key values
   // and having each cell know of its neighbor's states
