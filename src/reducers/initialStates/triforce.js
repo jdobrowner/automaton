@@ -1,9 +1,9 @@
 import { size } from '../../constants';
 
-const apex1 = { x : 40, y : 31 };
-const apex2 = { x : 35, y : 41 };
-const apex3 = { x : 45, y : 41 };
-const triangleHeight = 10;
+const apex1 = { x : 32, y : 15 };
+const apex2 = { x : 24, y : 31 };
+const apex3 = { x : 40, y : 31 };
+const triangleHeight = 16;
 
 export default () => {
   let state = {};
@@ -22,14 +22,14 @@ export default () => {
 }
 
 function getValueUp(n, m) {
-  return triangleUp(n, m, apex1) || triangleUp(n, m, apex2) || triangleUp(n, m, apex3);
+  return triangleUp(n, m, apex1, 2) || triangleUp(n, m, apex2, 1) || triangleUp(n, m, apex3, 3);
 }
 
 function getValueDown(n, m) {
-  return triangleDown(n, m, apex1) || triangleDown(n, m, apex2) || triangleDown(n, m, apex3);
+  return triangleDown(n, m, apex1, 2) || triangleDown(n, m, apex2, 1) || triangleDown(n, m, apex3, 3);
 }
 
-function triangleDown(n, m, apex) {
+function triangleDown(n, m, apex, color) {
   if ( m >= apex.y && m < apex.y + triangleHeight ) {
     if ( n >= apex.x - triangleHeight/2 && n < apex.x + triangleHeight/2 ) {
       const row = m - apex.y;
@@ -38,14 +38,14 @@ function triangleDown(n, m, apex) {
       const num3 = n - m + Math.floor(row/2);
       const num4 = apex.x - apex.y;
       if ((num1 >= num2 ) && (num3 < num4)) {
-        return 1;
+        return color;
       }
     }
   }
   return 0;
 }
 
-function triangleUp(n, m, apex) {
+function triangleUp(n, m, apex , color) {
   if ( m >= apex.y && m < apex.y + triangleHeight ) {
     if ( n >= apex.x - triangleHeight/2 && n < apex.x + triangleHeight/2 ) {
       const row = m - apex.y;
@@ -54,7 +54,7 @@ function triangleUp(n, m, apex) {
       const num3 = n - m + Math.ceil(row/2);
       const num4 = apex.x - apex.y;
       if ((num1 >= num2 ) && (num3 <= num4)) {
-        return 2;
+        return color;
       }
     }
   }

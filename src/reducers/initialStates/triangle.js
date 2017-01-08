@@ -1,7 +1,7 @@
 import { size } from '../../constants';
 
-const topApex = { x : 40, y : 31 };
-const triangleHeight = 20;
+const topApex = { x : 32, y : 23 };
+const triangleHeight = 15;
 
 export default () => {
   let state = {};
