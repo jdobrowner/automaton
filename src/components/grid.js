@@ -57,7 +57,7 @@ class Grid extends Component {
 		this.setState({ cells: this.generateGrid() });
 	}
 	componentDidMount() {
-    this.interval = setInterval(this.tick, 300);
+    this.interval = setInterval(this.tick, 100);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);

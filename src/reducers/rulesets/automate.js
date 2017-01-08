@@ -4,6 +4,7 @@ import { size } from '../../constants';
 
 function automate(state) {
   let grid = {};
+
   let ruleset = rulemon.setA;
 
   // getting the map of grid cells to react key values
