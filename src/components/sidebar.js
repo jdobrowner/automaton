@@ -80,18 +80,16 @@ class Sidebar extends Component {
             </div>
 
           <h3 className="options speed">speed</h3>
-            <div className="option button">
-              <div onClick={ () => this.changeSpeed(1500) }>slow</div>
-              <div onClick={ () => this.changeSpeed(1000) }>medium</div>
-              <div onClick={ () => this.changeSpeed(600) }>fast</div>
-            </div>
+            <div className="option button" onClick={ () => this.changeSpeed(1500) }> > </div>
+            <div className="option button" onClick={ () => this.changeSpeed(1000) }> >> </div>
+            <div className="option button" onClick={ () => this.changeSpeed(600) }> >>> </div>
           <h3 className="options initial-state">initial state</h3>
-            <div className="option button">*</div>
-            <div className="option button">V</div>
-            <div className="option button">/</div>
-            <div className="option button">|</div>
-            <div className="option button">o</div>
-            <div className="option button">$</div>
+            <div className="option button"><p>little triangle</p></div>
+            <div className="option button"><p>big triangle</p></div>
+            <div className="option button"><p>hexagon</p></div>
+            <div className="option button"><p>border</p></div>
+            <div className="option button"><p>face</p></div>
+            <div className="option button"><p>triforce</p></div>
       </div>
     )
   }

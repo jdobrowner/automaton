@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  font-family: 'Nova Mono', monospace;
+  font-family: 'Oxygen', sans-serif;
   box-sizing: border-box;
   // color: #5a5858;
 }
@@ -40,11 +40,23 @@ body, .container {
 }
 
 h1 {
+  font-family: 'Roboto Slab', serif;
   font-size: 30px;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 h3 {
   font-size: 16px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 200;
 }
 
 .app {
@@ -53,9 +65,20 @@ h3 {
 }
 
 .sidebar {
-  position: absolute;
+  position: fixed;
+  height: 100%;
+  width: 150px;
+  z-index: 1;
+  top: 60px;
   left: 1%;
-  // background-color: @default;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#show-hide {
+  position: fixed;
+  top: 0;
+  left: 1%;
 }
 
 .cell {
@@ -65,18 +88,15 @@ h3 {
 
 .grid {
   margin: 30px auto;
-  border: 1px solid @sw2;
+  /*border: 1px solid @sw2;*/
+  cursor: pointer;
 }
 
 .button {
   cursor: pointer;
-  border: 1px solid grey;
+  /*border: 1px solid grey;*/
   padding: 5px;
   margin: 20px 0;
-}
-
-.user-controls {
-  font-size: 22px;
 }
 
 .option {
