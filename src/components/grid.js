@@ -15,6 +15,7 @@ class Grid extends Component {
 		this.generateGrid = this.generateGrid.bind(this);
 		this.tick = this.tick.bind(this);
 		this.onGridClick = this.onGridClick.bind(this);
+		this.updateCells = this.updateCells.bind(this);
 	}
 	onGridClick() {
 		const isPaused = !this.props.paused;
@@ -42,25 +43,31 @@ class Grid extends Component {
 		return cells;
 	}
 	tick() {
-		if (this.state.speed !== this.props.speed) {
-			clearInterval(this.interval);
-			this.interval = setInterval(this.tick, this.props.speed);
-			this.setState({ speed: this.props.speed });
-		}
-
 		if (!this.props.paused) {
 			this.props.cycle();
-
-			const newCells = [];
-			const oldCells = this.state.cells;
-			const length = oldCells.length;
-			for (let i = 0; i < length; i++) {
-				const newColor = this.props.pattern[oldCells[i].key];
-				newCells.push(React.cloneElement(oldCells[i], { colorState: newColor, colorPallet: this.props.colors }));
-			}
-			this.setState({cells: newCells});
+			this.updateCells(this.props.colors);
+  	}
+	}
+	updateCells(colorPallet) {
+		const newCells = [];
+		const oldCells = this.state.cells;
+		const length = oldCells.length;
+		for (let i = 0; i < length; i++) {
+			const newColor = this.props.pattern[oldCells[i].key];
+			newCells.push(React.cloneElement(oldCells[i], { colorState: newColor, colorPallet: colorPallet }));
 		}
-  }
+		this.setState({cells: newCells});
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.colors !== this.props.colors) {
+			this.updateCells(nextProps.colors);
+		}
+		// update the speed of tick cycle when speed controls change
+		if (nextProps.speed !== this.props.speed) {
+			clearInterval(this.interval);
+			this.interval = setInterval(this.tick, nextProps.speed);
+		}
+	}
 	componentWillMount() {
 		this.setState({ cells: this.generateGrid() });
 	}

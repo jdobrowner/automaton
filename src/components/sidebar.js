@@ -23,9 +23,9 @@ class Sidebar extends Component {
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
+    this.props.pause();
     this.props.changeColors(newColors);
-    let htmlTag = document.getElementsByTagName("HTML")[0];
-    htmlTag.style.backgroundColor = newColors[0];
+    setTimeout(()=>{this.props.pause();}, 250);
   }
   render() {
     const colors = this.props.colors;
@@ -36,7 +36,7 @@ class Sidebar extends Component {
     let htmlTag = document.getElementsByTagName("HTML")[0];
     htmlTag.style.backgroundColor = colors[0];
     return (
-      <div className="sidebar" style={sidebarStyling}>
+      <div className="sidebar">
         <div className="button" id="show-hide">hide sidebar</div>
         <h1 className="title"> cellular <br /> automaton </h1>
         <div className="what-is-this button" onClick={this.toggleExplanation}>
