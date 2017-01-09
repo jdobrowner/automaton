@@ -29,13 +29,14 @@ class Grid extends Component {
 	generateGrid() {
 		let cells = [];
 		const grid = this.props.pattern;
+		const colors = this.props.colors;
 
 		for (let m = 0; m < size; m++) {
 			for (let n = 0; n < size; n++) {
 				const keyDown = `${n}-${m}`;
 				const keyUp = `${n}+${m}`;
-				cells.push( <CellDown n={n} m={m} key={keyDown} colorState={grid[keyDown]} /> );
-				cells.push( <CellUp n={n} m={m} key={keyUp} colorState={grid[keyUp]} /> );
+				cells.push( <CellDown n={n} m={m} key={keyDown} colorState={grid[keyDown]} colorPallet={colors} /> );
+				cells.push( <CellUp n={n} m={m} key={keyUp} colorState={grid[keyUp]} colorPallet={colors} /> );
 			}
 		}
 		return cells;
@@ -55,7 +56,7 @@ class Grid extends Component {
 			const length = oldCells.length;
 			for (let i = 0; i < length; i++) {
 				const newColor = this.props.pattern[oldCells[i].key];
-				newCells.push(React.cloneElement(oldCells[i], { colorState: newColor }));
+				newCells.push(React.cloneElement(oldCells[i], { colorState: newColor, colorPallet: this.props.colors }));
 			}
 			this.setState({cells: newCells});
 		}
@@ -89,7 +90,8 @@ function mapStateToProps(state) {
   return {
 						pattern: state.pattern,
 						speed: state.speed,
-						paused: state.paused
+						paused: state.paused,
+						colors: state.colors
 	 				};
 }
 

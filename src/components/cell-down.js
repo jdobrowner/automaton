@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { unit } from '../constants';
-import colors from '../colors';
 
 export default class Cell extends Component {
 	constructor() {
 		super();
 	}
 	shouldComponentUpdate(nextProps, nextState) {
-		return !(nextProps.colorState === this.props.colorState);
+		return !(nextProps.colorState === this.props.colorState) || !(nextProps.colorPallet === this.props.colorPallet);
 	}
 	render() {
-		const n = this.props.n;
-		const m = this.props.m;
-		const cellState = getColor(this.props.colorState);
-		return <polygon points={getPointsDownTriangle(n, m)} fill={cellState} stroke={colors.southwest[0]} strokeWidth='0.5'/>
+		const props = this.props;
+		const n = props.n;
+		const m = props.m;
+		const colorPallet = props.colorPallet;
+		const cellState = getColor(props.colorState, colorPallet);
+		return <polygon points={getPointsDownTriangle(n, m)} fill={cellState} stroke={colorPallet[0]} strokeWidth='0.5'/>
 	}
 }
 
-function getColor(n = 0) {
-	return colors.southwest[n];
+function getColor(n = 0, colors) {
+	return colors[n];
 }
 
 function getPointsDownTriangle(n, m) {

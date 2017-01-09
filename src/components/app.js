@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import GridContainer from './grid-container';
 import Sidebar from './sidebar';
 import Explanation from './explanation';
