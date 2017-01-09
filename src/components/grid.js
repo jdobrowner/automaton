@@ -64,9 +64,9 @@ class Grid extends Component {
 		this.setState({ cells: this.generateGrid() });
 	}
 	componentDidMount() {
-		const speed = this.props.speed;
-		this.setState({ speed: speed })
-		setTimeout( () => { this.interval = setInterval(this.tick, speed) }, 200);
+		// const speed = this.props.speed;
+		// this.setState({ speed: speed })
+		// setTimeout( () => { this.interval = setInterval(this.tick, speed) }, 200);
   }
 	componentWillUnmount() {
     clearInterval(this.interval);

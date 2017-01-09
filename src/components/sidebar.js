@@ -22,7 +22,6 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar">
-        <div className="button" id="show-hide">hide sidebar</div>
         <h1 className="title"> cellular <br /> automaton </h1>
         <div className="what-is-this button" onClick={this.toggleExplanation}>
           <h3>what is this?</h3>
@@ -62,18 +61,16 @@ class Sidebar extends Component {
             </div>
 
           <h3 className="options speed">speed</h3>
-            <div className="option button">
-              <div onClick={ () => this.changeSpeed(1500) }>slow</div>
-              <div onClick={ () => this.changeSpeed(1000) }>medium</div>
-              <div onClick={ () => this.changeSpeed(600) }>fast</div>
-            </div>
+            <div className="option button" onClick={ () => this.changeSpeed(1500) }> > </div>
+            <div className="option button" onClick={ () => this.changeSpeed(1000) }> >> </div>
+            <div className="option button" onClick={ () => this.changeSpeed(600) }> >>> </div>
           <h3 className="options initial-state">initial state</h3>
-            <div className="option button">*</div>
-            <div className="option button">V</div>
-            <div className="option button">/</div>
-            <div className="option button">|</div>
-            <div className="option button">o</div>
-            <div className="option button">$</div>
+            <div className="option button"><p>little triangle</p></div>
+            <div className="option button"><p>big triangle</p></div>
+            <div className="option button"><p>hexagon</p></div>
+            <div className="option button"><p>border</p></div>
+            <div className="option button"><p>face</p></div>
+            <div className="option button"><p>triforce</p></div>
       </div>
     )
   }
