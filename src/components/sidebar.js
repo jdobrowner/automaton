@@ -49,7 +49,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "186px"
+      left: "181px"
     };
     const hideStyling = {
       backgroundColor: colors[0],
@@ -73,7 +73,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "186px"
+      left: "181px"
     };
     this.setState({ showhideStyling: showStyling });
   }
@@ -104,7 +104,10 @@ class SidebarContainer extends Component {
             <h3 className="options color">color</h3>
               <Swatch colors={colorChoices.green} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.purple} onColorClick={this.changeColors} />
-              <Swatch colors={colorChoices.southwest} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.southwest} onColorClick={this.changeColors} /> <br />
+              <Swatch colors={colorChoices.brights} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.red} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.ocean} onColorClick={this.changeColors} />
             <h3 className="options speed">speed</h3>
               <div className="option button" onClick={ () => this.changeSpeed(1500) }> > </div>
               <div className="option button" onClick={ () => this.changeSpeed(1000) }> >> </div>
