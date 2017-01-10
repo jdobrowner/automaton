@@ -4,9 +4,11 @@ import explain from './showExplanation';
 import speed from './speed';
 import pause from './pause';
 import colors from './changeColors';
+import patternSwitch from './patternSwitch';
 
 const rootReducer = combineReducers({
   pattern: cycle,
+  patternSwitch: patternSwitch,
   showExplanation: explain,
   speed: speed,
   paused: pause,

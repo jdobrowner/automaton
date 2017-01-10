@@ -45,27 +45,32 @@ class Grid extends Component {
 	tick() {
 		if (!this.props.paused) {
 			this.props.cycle();
-			this.updateCells(this.props.colors);
+			this.updateCells(this.props.colors, this.props.pattern);
   	}
 	}
-	updateCells(colorPallet) {
+	updateCells(colorPallet, pattern) {
 		const newCells = [];
 		const oldCells = this.state.cells;
 		const length = oldCells.length;
 		for (let i = 0; i < length; i++) {
-			const newColor = this.props.pattern[oldCells[i].key];
+			const newColor = pattern[oldCells[i].key];
 			newCells.push(React.cloneElement(oldCells[i], { colorState: newColor, colorPallet: colorPallet }));
 		}
 		this.setState({cells: newCells});
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.colors !== this.props.colors) {
-			this.updateCells(nextProps.colors);
+			this.updateCells(nextProps.colors, nextProps.pattern);
 		}
 		// update the speed of tick cycle when speed controls change
 		if (nextProps.speed !== this.props.speed) {
 			clearInterval(this.interval);
 			this.interval = setInterval(this.tick, nextProps.speed);
+		}
+
+		// for when the user changes the inital pattern state
+		if (nextProps.patternSwitch !== this.props.patternSwitch) {
+			this.updateCells(nextProps.colors, nextProps.pattern);
 		}
 	}
 	componentWillMount() {
@@ -96,6 +101,7 @@ class Grid extends Component {
 function mapStateToProps(state) {
   return {
 						pattern: state.pattern,
+						patternSwitch: state.patternSwitch,
 						speed: state.speed,
 						paused: state.paused,
 						colors: state.colors
