@@ -29,6 +29,8 @@ class SidebarContainer extends Component {
     this.props.explain();
   }
   changeSpeed(newSpeed) {
+    this.props.pause();
+    setTimeout(()=>{ this.props.pause(); }, 600);
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
