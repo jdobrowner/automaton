@@ -14,7 +14,7 @@ export default class Cell extends Component {
 		const m = props.m;
 		const colorPallet = props.colorPallet;
 		const cellState = getColor(props.colorState, colorPallet);
-		return <polygon points={getPointsDownTriangle(n, m)} fill={cellState} stroke={colorPallet[0]} strokeWidth='0.5'/>
+		return <polygon points={getPointsDownTriangle(n, m)} fill={cellState} stroke={colorPallet[0]} strokeWidth='0'/>
 	}
 }
 

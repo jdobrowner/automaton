@@ -5,5 +5,6 @@ import face from './face';
 import border from './border';
 import hexagon from './hexagon';
 import thunderbolt from './thunderbolt';
+import nestedTriangle from './nestedTriangle';
 
-export default {triangle, oneTriangle, triforce, face, border, hexagon, thunderbolt};
+export default {triangle, oneTriangle, triforce, face, border, hexagon, thunderbolt, nestedTriangle};

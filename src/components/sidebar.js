@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import explain from '../actions/toggleExplanation';
 import changeSpeed from '../actions/changeSpeed';
 import pause from '../actions/pause';
+import newPattern from '../actions/newPattern';
 import changeColors from '../actions/changeColors';
 import colorChoices from '../colors';
 import Swatch from './sidebar-components/swatch';
@@ -29,8 +30,14 @@ class SidebarContainer extends Component {
   changeColors(newColors) {
     this.props.pause();
     this.props.changeColors(newColors);
-    // setTimeout(()=>{ this.props.changeColors(newColors); }, 100);
     setTimeout(()=>{ this.props.pause(); }, 1000);
+
+    const showhideStyling = {
+      ...this.state.showhideStyling,
+      backgroundColor: newColors[0],
+      border: `5px solid ${newColors[0]}`,
+    };
+    this.setState({ showhideStyling: showhideStyling });
   }
   toggleSidebar() {
     const showSidebar = !this.state.showSidebar;
@@ -48,7 +55,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       border: `5px solid ${colors[0]}`,
       "msTransform": "rotate(180deg)",
-      "WebkitTransform": "rotate(180deg)", 
+      "WebkitTransform": "rotate(180deg)",
       "transform": "rotate(180deg)",
       transition: "0.6s"
     };
@@ -57,7 +64,8 @@ class SidebarContainer extends Component {
   }
   changeInitialState(initial) {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, 1000);
+    this.props.newPattern(initial);
+    setTimeout(()=>{ this.props.pause(); }, 600);
   }
   componentWillMount() {
     const colors = this.props.colors;
@@ -67,7 +75,7 @@ class SidebarContainer extends Component {
       border: `5px solid ${colors[0]}`,
       left: "181px"
     };
-    this.setState({ showhideStyling: showStyling }); 
+    this.setState({ showhideStyling: showStyling });
   }
   render() {
     const colors = this.props.colors;
@@ -107,11 +115,11 @@ class SidebarContainer extends Component {
             <h3 className="options initial-state">initial state</h3>
               <InitialState title={'little triangle'} onStateClick={ this.changeInitialState }/>
               <InitialState title={'big triangle'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'nested triangle'} onStateClick={ this.changeInitialState } />
               <InitialState title={'hexagon'} onStateClick={ this.changeInitialState } />
               <InitialState title={'border'} onStateClick={ this.changeInitialState } />
               <InitialState title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState title={'triforce'} onStateClick={ this.changeInitialState } />
-              <InitialState title={'other'} onStateClick={ this.changeInitialState } />
         </div>
       </div>
     )
@@ -131,7 +139,8 @@ function mapDispatchToProps(dispatch) {
     explain: explain,
     changeSpeed: changeSpeed,
     pause: pause,
-    changeColors: changeColors
+    changeColors: changeColors,
+    newPattern: newPattern
   }
   return bindActionCreators(actions, dispatch);
 }
