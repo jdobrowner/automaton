@@ -13,7 +13,7 @@ import InitialState from './sidebar-components/initial-states';
 class SidebarContainer extends Component {
   constructor () {
     super();
-    this.state = { showExplanation: false, showSidebar: true, sidebarWidth: "220px", sidebarPadding: "40px 10px", };
+    this.state = { showExplanation: false, showSidebar: true, sidebarWidth: "220px", sidebarPadding: "0 10px" };
     this.toggleExplanation = this.toggleExplanation.bind(this);
     this.changeSpeed = this.changeSpeed.bind(this);
     this.changeColors = this.changeColors.bind(this);
@@ -42,7 +42,7 @@ class SidebarContainer extends Component {
   toggleSidebar() {
     const showSidebar = !this.state.showSidebar;
     const sidebarWidth = showSidebar ? "220px" : "0";
-    const sidebarPadding = showSidebar ? "40px 10px" : "0";
+    const sidebarPadding = showSidebar ? "0 10px" : "0";
 
     const colors = this.props.colors;
     const showStyling = {
@@ -96,7 +96,7 @@ class SidebarContainer extends Component {
           </svg>
         </div>
         <div className="sidebar" style={sidebarStyling}>
-          <h1 className="title"> cellular <br /> automaton </h1>
+          <h1 className="title"> <br /> cellular <br /> automaton </h1>
           <div className="what-is-this button" onClick={this.toggleExplanation}>
             <h3>what is this?</h3>
           </div>
@@ -120,6 +120,10 @@ class SidebarContainer extends Component {
               <InitialState title={'border'} onStateClick={ this.changeInitialState } />
               <InitialState title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState title={'triforce'} onStateClick={ this.changeInitialState } />
+            <h3 className="options random">randomness</h3>
+              <div className="option button"> 0 </div>
+              <div className="option button"> + </div>
+              <div className="option button"> +++ </div>  
         </div>
       </div>
     )
@@ -129,7 +133,7 @@ class SidebarContainer extends Component {
 function mapStateToProps(state) {
   const props = {
     showExplanation: state.showExplanation,
-    colors: state.colors,
+    colors: state.colors
   }
   return props;
 }
