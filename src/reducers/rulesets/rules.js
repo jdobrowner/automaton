@@ -85,12 +85,21 @@ function set14(a = 0, b = 0, c = 0, d = 0) {
 }
 
 // a really good random one, good with triforce
+// function set15(a = 0, b = 0, c = 0, d = 0) {
+//   const rand = Math.random() * 10;
+//   if (rand < 1) return b;
+//   else if (rand < 3) return c;
+//   else if ( rand < 7 ) return a;
+//   else return d;
+// }
+
+// a really good random one, good with triforce
 function set15(a = 0, b = 0, c = 0, d = 0) {
-  const rand = Math.random() * 10;
+  const rand = Math.random() * 5;
   if (rand < 1) return b;
-  else if (rand < 3) return c;
-  else if ( rand < 7 ) return a;
-  else return d;
+  else if (rand < 2) return c;
+  else if ( rand < 3 ) return d;
+  else return a;
 }
 
 // another really good random one, good with triforce
