@@ -42,7 +42,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "186px"
+      left: "181px"
     };
     const hideStyling = {
       backgroundColor: colors[0],
@@ -65,7 +65,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "186px"
+      left: "181px"
     };
     this.setState({ showhideStyling: showStyling }); 
   }
@@ -96,19 +96,22 @@ class SidebarContainer extends Component {
             <h3 className="options color">color</h3>
               <Swatch colors={colorChoices.green} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.purple} onColorClick={this.changeColors} />
-              <Swatch colors={colorChoices.southwest} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.southwest} onColorClick={this.changeColors} /> <br />
+              <Swatch colors={colorChoices.brights} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.red} onColorClick={this.changeColors} />
+              <Swatch colors={colorChoices.ocean} onColorClick={this.changeColors} />
             <h3 className="options speed">speed</h3>
               <div className="option button" onClick={ () => this.changeSpeed(1500) }> > </div>
               <div className="option button" onClick={ () => this.changeSpeed(1000) }> >> </div>
               <div className="option button" onClick={ () => this.changeSpeed(600) }> >>> </div>
             <h3 className="options initial-state">initial state</h3>
-              <InitialState initial={'little triangle'} onStateClick={ this.changeInitialState }/>
-              <InitialState initial={'big triangle'} onStateClick={ this.changeInitialState } />
-              <InitialState initial={'hexagon'} onStateClick={ this.changeInitialState } />
-              <InitialState initial={'border'} onStateClick={ this.changeInitialState } />
-              <InitialState initial={'face'} onStateClick={ this.changeInitialState } />
-              <InitialState initial={'triforce'} onStateClick={ this.changeInitialState } />
-              <InitialState initial={'other'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'little triangle'} onStateClick={ this.changeInitialState }/>
+              <InitialState title={'big triangle'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'hexagon'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'border'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'face'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'triforce'} onStateClick={ this.changeInitialState } />
+              <InitialState title={'other'} onStateClick={ this.changeInitialState } />
         </div>
       </div>
     )
