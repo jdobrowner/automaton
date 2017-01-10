@@ -12,8 +12,8 @@
     "watch:css": "chokidar-cmd -c 'npm run build:css' -t style/**/*.less",
     "build:js": "webpack",
     "build:html": "rm -f build/index.html && cp index.html build/",
-    "build:static": "cp -r static/* build/",
-    "build": "rm -rf build && mkdir -p build && npm run build:html && npm run build:css && npm run build:js"
+    "build:images": "cp -r images/* build/",
+    "build": "rm -rf build && mkdir -p build && npm run build:images && npm run build:html && npm run build:css && npm run build:js"
   },
   "author": "Jason Dobrowner and Monika Zarako-Dobrowner",
   "license": "ISC",

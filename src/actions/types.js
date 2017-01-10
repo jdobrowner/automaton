@@ -4,5 +4,6 @@ const PAUSE = 'pause';
 const SPEED = 'speed';
 const COLORS = 'colors';
 const PATTERN = 'pattern';
+const RULESET = 'ruleset';
 
-module.exports = { CYCLE, EXPLAIN, PAUSE, SPEED, COLORS, PATTERN };
+module.exports = { CYCLE, EXPLAIN, PAUSE, SPEED, COLORS, PATTERN, RULESET };

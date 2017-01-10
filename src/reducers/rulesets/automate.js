@@ -1,9 +1,9 @@
-import * as rule from './rules';
+// import * as rule from './rules';
 import { size } from '../../constants';
 
-function automate(state) {
+function automate(state, ruleset) { // ruleset is a function
   let grid = {};
-  let ruleset = rule.set2;
+  // let ruleset = rule.set2;
 
 
   // getting the map of grid cells to react key values
@@ -23,12 +23,6 @@ function automate(state) {
       if ( P < 0 ) P = size - 1;
       if ( Q >= size) Q = 0;
 
-      //  _______
-      //  \     /
-      //   \   /
-      //    \ /
-      //
-      //
       // A is self-reffering
       // B is 2/3 pi
       // D is 4/3 pi
