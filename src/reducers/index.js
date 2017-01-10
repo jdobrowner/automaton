@@ -5,6 +5,7 @@ import speed from './speed';
 import pause from './pause';
 import colors from './changeColors';
 import patternSwitch from './patternSwitch';
+import ruleset from './changeRuleset';
 
 const rootReducer = combineReducers({
   pattern: cycle,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   showExplanation: explain,
   speed: speed,
   paused: pause,
-  colors: colors
+  colors: colors,
+  ruleset: ruleset
 });
 
 export default rootReducer;

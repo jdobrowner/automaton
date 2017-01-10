@@ -1,7 +1,8 @@
 import { CYCLE } from './types';
 
-export default () => {
+export default (ruleset) => {
 	return {
-		type: CYCLE
+		type: CYCLE,
+		ruleset: ruleset // currently and integer [0, 12]
 	}
 }

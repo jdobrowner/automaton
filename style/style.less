@@ -1,38 +1,8 @@
 @import 'reset.less';
 
-@blue: #a67f42;
-@default: #FAEBCD ;
-
-@g0: #F3FBF1;
-@g1: #D1E4D1;
-@g2: #98B4A6;
-@g3: #64868E;
-
-@p0: #efe9e0;
-@p1: #d1bbbb;
-@p2: #d0a18b;
-@p3: #8c6378;
-
-@b0: #DFE0D4;
-
-@sw0: #FAEBCD;
-@sw1: #F7C873;
-@sw2: #d07b69;
-@sw3: #5a5858;
-
-/*@p0: #F5D7A1;
-@p1: #F0A28E;
-@p2: #BA6476;
-@p3: #812D58;*/
-
-html {
-  // background-color: @default;
-}
-
 body {
   font-family: 'Oxygen', sans-serif;
   box-sizing: border-box;
-  // color: #5a5858;
 }
 
 body, .container {
@@ -73,10 +43,6 @@ p {
   overflow-x: hidden;
   white-space: nowrap;
   transition: 0.6s;
-
-  h1, h2, h3, div, p {
-    transition: 0.3s;
-  }
 }
 
 #show-hide {
@@ -85,12 +51,6 @@ p {
   left: 0%;
   margin: 0;
   z-index: 2;
-}
-
-
-.cell {
-  stroke: @default;
-  stroke-width: 0.5;
 }
 
 .grid {
@@ -139,52 +99,4 @@ p {
   width: 10px;
   height: 10px;
   display: inline-block;
-}
-
-#green0 {
-  background-color: @g0;
-}
-
-#green1 {
-  background-color: @g1;
-}
-
-#green2 {
-  background-color: @g2;
-}
-
-#green3 {
-  background-color: @g3;
-}
-
-#purple0 {
-  background-color: @p0;
-}
-
-#purple1 {
-  background-color: @p1;
-}
-
-#purple2 {
-  background-color: @p2;
-}
-
-#purple3 {
-  background-color: @p3;
-}
-
-#southwest0 {
-  background-color: @sw0;
-}
-
-#southwest1 {
-  background-color: @sw1;
-}
-
-#southwest2 {
-  background-color: @sw2;
-}
-
-#southwest3 {
-  background-color: @sw3;
 }

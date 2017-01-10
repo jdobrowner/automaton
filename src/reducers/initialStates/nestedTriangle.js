@@ -1,8 +1,8 @@
 import { size } from '../../constants';
 
-const apex1 = { x : 32, y : 15 };
-const apex2 = { x : 32, y : 21 };
-const apex3 = { x : 32, y : 27 };
+const apex1 = { x : 32, y : 19 };
+const apex2 = { x : 32, y : 25 };
+const apex3 = { x : 32, y : 31 };
 const triangleHeight1 = 27;
 const triangleHeight2 = 18;
 const triangleHeight3 = 9;
