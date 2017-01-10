@@ -12,11 +12,12 @@ import InitialState from './sidebar-components/initial-states';
 class SidebarContainer extends Component {
   constructor () {
     super();
-    this.state = { showExplanation: false, showSidebar: true };
+    this.state = { showExplanation: false, showSidebar: true, sidebarWidth: "220px", sidebarPadding: "40px 10px", };
     this.toggleExplanation = this.toggleExplanation.bind(this);
     this.changeSpeed = this.changeSpeed.bind(this);
     this.changeColors = this.changeColors.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.changeInitialState = this.changeInitialState.bind(this);
   }
   toggleExplanation() {
     this.props.pause();
@@ -32,34 +33,60 @@ class SidebarContainer extends Component {
     setTimeout(()=>{ this.props.pause(); }, 1000);
   }
   toggleSidebar() {
-    console.log('entered toggle');
+    const showSidebar = !this.state.showSidebar;
+    const sidebarWidth = showSidebar ? "220px" : "0";
+    const sidebarPadding = showSidebar ? "40px 10px" : "0";
+
     const colors = this.props.colors;
-    let sidebarStylingWidth = {
-        backgroundColor: colors[0],
-        color: colors[3],
-        height: "100%"
-      }
-    if (this.state.showSidebar) {
-      this.setState({showSidebar: !this.state.showSidebar});
-      sidebarStylingWidth.width = "0";
-    }
-    else {
-      this.setState({showSidebar: true});
-      sidebarStylingWidth.width = "200px";
-    }
-    return sidebarStylingWidth;
+    const showStyling = {
+      backgroundColor: colors[0],
+      transition: "0.6s",
+      border: `5px solid ${colors[0]}`,
+      left: "186px"
+    };
+    const hideStyling = {
+      backgroundColor: colors[0],
+      border: `5px solid ${colors[0]}`,
+      "msTransform": "rotate(180deg)",
+      "WebkitTransform": "rotate(180deg)", 
+      "transform": "rotate(180deg)",
+      transition: "0.6s"
+    };
+    const showhideStyling = showSidebar ? showStyling : hideStyling;
+    this.setState({ sidebarWidth: sidebarWidth, showSidebar: showSidebar, sidebarPadding: sidebarPadding, showhideStyling: showhideStyling });
+  }
+  changeInitialState(initial) {
+    this.props.pause();
+    setTimeout(()=>{ this.props.pause(); }, 1000);
+  }
+  componentWillMount() {
+    const colors = this.props.colors;
+    const showStyling = {
+      backgroundColor: colors[0],
+      transition: "0.6s",
+      border: `5px solid ${colors[0]}`,
+      left: "186px"
+    };
+    this.setState({ showhideStyling: showStyling }); 
   }
   render() {
     const colors = this.props.colors;
     const sidebarStyling = {
-      backgroundColor: colors[0],
-      color: colors[3]
-    }
+      backgroundColor: colors[1],
+      color: colors[3],
+      width: this.state.sidebarWidth,
+      padding: this.state.sidebarPadding
+    };
+    const arrowFill = colors[2];
     let htmlTag = document.getElementsByTagName("HTML")[0];
     htmlTag.style.backgroundColor = colors[0];
     return (
       <div className="sidebar-container">
-        <div className="button" id="show-hide" style={sidebarStyling} onClick={ this.toggleSidebar }>hide</div>
+        <div className="button" id="show-hide" style={this.state.showhideStyling} onClick={ this.toggleSidebar }>
+          <svg height="20" width="20">
+            <path d="M18 2 L2 10 L18 18 Z" fill={arrowFill} />
+          </svg>
+        </div>
         <div className="sidebar" style={sidebarStyling}>
           <h1 className="title"> cellular <br /> automaton </h1>
           <div className="what-is-this button" onClick={this.toggleExplanation}>
@@ -75,13 +102,13 @@ class SidebarContainer extends Component {
               <div className="option button" onClick={ () => this.changeSpeed(1000) }> >> </div>
               <div className="option button" onClick={ () => this.changeSpeed(600) }> >>> </div>
             <h3 className="options initial-state">initial state</h3>
-              <InitialState initial={'little triangle'} />
-              <InitialState initial={'big triangle'} />
-              <InitialState initial={'hexagon'} />
-              <InitialState initial={'border'} />
-              <InitialState initial={'face'} />
-              <InitialState initial={'triforce'} />
-              <InitialState initial={'other'} />
+              <InitialState initial={'little triangle'} onStateClick={ this.changeInitialState }/>
+              <InitialState initial={'big triangle'} onStateClick={ this.changeInitialState } />
+              <InitialState initial={'hexagon'} onStateClick={ this.changeInitialState } />
+              <InitialState initial={'border'} onStateClick={ this.changeInitialState } />
+              <InitialState initial={'face'} onStateClick={ this.changeInitialState } />
+              <InitialState initial={'triforce'} onStateClick={ this.changeInitialState } />
+              <InitialState initial={'other'} onStateClick={ this.changeInitialState } />
         </div>
       </div>
     )

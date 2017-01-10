@@ -2,7 +2,7 @@ import { CYCLE } from '../actions/types';
 import initialStates from './initialStates/index';
 import automate from './rulesets/automate';
 
-export default function cycle(state = initialStates.thunderbolt(), action) {
+export default function cycle(state = initialStates.hexagon(), action) {
 	switch (action.type) {
 		case CYCLE:
 			return automate(state);
