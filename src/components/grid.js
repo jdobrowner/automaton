@@ -44,7 +44,7 @@ class Grid extends Component {
 	}
 	tick() {
 		if (!this.props.paused) {
-			this.props.cycle();
+			this.props.cycle(this.props.ruleset);
 			this.updateCells(this.props.colors, this.props.pattern);
   	}
 	}
@@ -104,7 +104,8 @@ function mapStateToProps(state) {
 						patternSwitch: state.patternSwitch,
 						speed: state.speed,
 						paused: state.paused,
-						colors: state.colors
+						colors: state.colors,
+						ruleset: state.ruleset
 	 				};
 }
 

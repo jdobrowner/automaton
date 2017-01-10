@@ -4,11 +4,14 @@ import { bindActionCreators } from 'redux';
 import explain from '../actions/toggleExplanation';
 import changeSpeed from '../actions/changeSpeed';
 import pause from '../actions/pause';
+import cycle from '../actions/cycle';
 import newPattern from '../actions/newPattern';
 import changeColors from '../actions/changeColors';
+import changeRuleset from '../actions/changeRuleset';
 import colorChoices from '../colors';
 import Swatch from './sidebar-components/swatch';
 import InitialState from './sidebar-components/initial-states';
+import Ruleset from './sidebar-components/ruleset';
 
 class SidebarContainer extends Component {
   constructor () {
@@ -19,6 +22,7 @@ class SidebarContainer extends Component {
     this.changeColors = this.changeColors.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.changeInitialState = this.changeInitialState.bind(this);
+    this.changeRuleset = this.changeRuleset.bind(this);
   }
   toggleExplanation() {
     this.props.pause();
@@ -29,8 +33,9 @@ class SidebarContainer extends Component {
   }
   changeColors(newColors) {
     this.props.pause();
-    this.props.changeColors(newColors);
     setTimeout(()=>{ this.props.pause(); }, 1000);
+
+    this.props.changeColors(newColors);
 
     const showhideStyling = {
       ...this.state.showhideStyling,
@@ -39,7 +44,17 @@ class SidebarContainer extends Component {
     };
     this.setState({ showhideStyling: showhideStyling });
   }
+  changeRuleset(ruleset) {
+    this.props.pause();
+    setTimeout(()=>{ this.props.pause(); }, 1000);
+
+    this.props.changeRuleset(ruleset);
+    this.props.cycle(ruleset);
+  }
   toggleSidebar() {
+    this.props.pause();
+    setTimeout(()=>{ this.props.pause(); }, 800);
+
     const showSidebar = !this.state.showSidebar;
     const sidebarWidth = showSidebar ? "220px" : "0";
     const sidebarPadding = showSidebar ? "0 10px" : "0";
@@ -124,6 +139,17 @@ class SidebarContainer extends Component {
               <div className="option button"> 0 </div>
               <div className="option button"> + </div>
               <div className="option button"> +++ </div>  
+            <h3 className="options">ruleset</h3>
+              <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"cloner"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"floater"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"mangler"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"mangler high R"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"expander medium R"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"birds"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"horizons mediun R"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"birds v2"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"rain"} onRulesetClick={ this.changeRuleset } />
         </div>
       </div>
     )
@@ -133,7 +159,8 @@ class SidebarContainer extends Component {
 function mapStateToProps(state) {
   const props = {
     showExplanation: state.showExplanation,
-    colors: state.colors
+    colors: state.colors,
+    ruleset: state.ruleset
   }
   return props;
 }
@@ -141,8 +168,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   const actions = {
     explain: explain,
-    changeSpeed: changeSpeed,
+    cycle: cycle,
     pause: pause,
+    changeSpeed: changeSpeed,
+    changeRuleset: changeRuleset,
     changeColors: changeColors,
     newPattern: newPattern
   }
