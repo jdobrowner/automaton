@@ -65,7 +65,6 @@ function initialPattern() {
 }
 
 function getRuleset(ruleset) {
-	console.log('ruleset', ruleset);
   switch (ruleset) {
     case 'expander': return rulesJ.set2;
     case 'cloner': return rulesJ.set7;

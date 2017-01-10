@@ -30,12 +30,12 @@ class SidebarContainer extends Component {
   }
   changeSpeed(newSpeed) {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, 600);
+    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, 1000);
+    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
 
     this.props.changeColors(newColors);
 
@@ -48,14 +48,14 @@ class SidebarContainer extends Component {
   }
   changeRuleset(ruleset) {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, 1000);
+    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
 
     this.props.changeRuleset(ruleset);
     this.props.cycle(ruleset);
   }
   toggleSidebar() {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, 800);
+    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
 
     const showSidebar = !this.state.showSidebar;
     const sidebarWidth = showSidebar ? "220px" : "0";
@@ -81,8 +81,8 @@ class SidebarContainer extends Component {
   }
   changeInitialState(initial) {
     this.props.pause();
+    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
     this.props.newPattern(initial);
-    setTimeout(()=>{ this.props.pause(); }, 600);
   }
   componentWillMount() {
     const colors = this.props.colors;
@@ -140,7 +140,7 @@ class SidebarContainer extends Component {
             <h3 className="options random">randomness</h3>
               <div className="option button"> 0 </div>
               <div className="option button"> + </div>
-              <div className="option button"> +++ </div>  
+              <div className="option button"> +++ </div>
             <h3 className="options">ruleset</h3>
               <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"cloner"} onRulesetClick={ this.changeRuleset } />
@@ -162,7 +162,8 @@ function mapStateToProps(state) {
   const props = {
     showExplanation: state.showExplanation,
     colors: state.colors,
-    ruleset: state.ruleset
+    ruleset: state.ruleset,
+    speed: state.speed
   }
   return props;
 }
