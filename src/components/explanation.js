@@ -14,14 +14,14 @@ class Explanation extends Component {
     this.props.pause();
     this.props.explain();
   }
-  swapExplanationColors() {
-    let colors = [ ...this.props.colors ];
+  swapExplanationColors(newColors) {
+    let colors = [ ...newColors ];
     // brights
       if (colors[0] === "#353940") {
         colors[3] = "#353940";
         colors[1] = "#DFE0D4";
       }
-    // ocean 
+    // ocean
       if (colors[1] === "#334558") {
         colors[3] = "#334558";
         colors[1] = "#F0F5F9";
@@ -30,14 +30,14 @@ class Explanation extends Component {
       if (colors[1] === "#671a31") {
         colors[3] = "#671a31";
         colors[1] = "#fbd4d0";
-      }  
+      }
     this.setState({ colors: colors });
   }
-  componentWillReceiveProps() {
-    this.swapExplanationColors();
+  componentWillReceiveProps(nextProps) {
+    this.swapExplanationColors(nextProps.colors);
   }
   componentWillMount() {
-    this.swapExplanationColors();
+    this.swapExplanationColors(this.props.colors);
   }
   render() {
     const colors = this.state.colors;
