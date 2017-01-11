@@ -42,9 +42,14 @@ class Explanation extends Component {
   render() {
     const colors = this.state.colors;
     const explanation = this.props.showExplanation ? "explanation" : "explanation hidden";
+    const closeStyling = {backgroundColor: colors[0], border: `5px solid ${colors[0]}`};
     return (
       <div className={explanation} onClick={ this.hideExplanation } style={{backgroundColor: colors[1]}}>
-        <div className="close-explanation" style={{fontFamily: "Muli", color: colors[3]}}>X</div>
+        <div className="button close-explanation" style={closeStyling} >
+          <svg height="20" width="20">
+            <path d="M2 2 L18 18 M2 18 L18 2" stroke={colors[2]} strokeWidth="5"/>
+          </ svg>
+        </ div>
         <p style={{color: colors[3]}}><span>A cellular automaton is a system of cells</span> that change with each iteration according to a given ruleset. Each cell has an initial state (e.g. 0 or 1) which is updated based on the states of its neighbors. Cellular automaton have been explored since their discovery in the 1940s by Stanislaw Ulam and John von Neumann during their work on the Manhattan Project and more recently by Stephen Wolfram. Originally studied as a model for self-replication, cellular automata have important implications for numerous fields of study, including computability theory, mathematics, physics, and biology.  <br /><br /><br />
 
           <span>The simplest model of a cellular automaton is a 1D collection</span> of square cells in a row, each of which has a state of either 0 (white) or 1 (black). In this <a style={{color: colors[3]}} target="blank" href="http://mathworld.wolfram.com/ElementaryCellularAutomaton.html">model</a>, each cell has two neighbors– one to its left and one to its right. The cells' states change according to a set of rules. For example, if the current cell state is 0, its left neighbor is 0, and its right neighbor's is 1, change the current cell state to 1. For this most simple model, there exist 256 possible rulesets/combinations, creating a variety of visual patterns. <br /><br /><br />
