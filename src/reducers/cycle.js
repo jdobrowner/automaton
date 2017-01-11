@@ -1,15 +1,15 @@
 import { CYCLE, PATTERN, RULESET } from '../actions/types';
 import initialStates from './initialStates/index';
 import automate from './rulesets/automate';
-import rulesJ from './rulesets/rules';
-import rulesM from './rulesets/rules-monika';
+import rules from './rulesets/rules';
+import rockPaperScissors from './rulesets/rockPaperScissors';
 
 export default function cycle(state = initialPattern(), action) {
 	switch (action.type) {
 		case CYCLE:
-			return automate(state, getRuleset(action.ruleset)); //action.ruleset is currently and integer [0, 12]
+			return automate(state, getRuleset(action.ruleset));
 		case RULESET:
-			return automate(state, getRuleset(action.ruleset)); //action.ruleset is currently and integer [0, 12]
+			return automate(state, getRuleset(action.ruleset));
 		case PATTERN:
 			return newPattern(action.pattern);
 		default:
@@ -66,21 +66,33 @@ function initialPattern() {
 
 function getRuleset(ruleset) {
   switch (ruleset) {
-    case 'expander': return rulesJ.set2;
-    case 'cloner': return rulesJ.set7;
-    case 'floater': return rulesJ.set12;
-    case 'mangler': return rulesJ.set15;
-    case 'mangler high R': return rulesJ.set16;
-    case 'expander medium R': return rulesJ.set17;
-    case 'birds': return rulesM.setA;
-    case 'horizons mediun R': return rulesM.setB;
-    case 'birds v2': return rulesM.setC;
-    case 'rain': return rulesM.setD;
-    default: return rulesJ.set2;
+    case 'expander': return rules.expander;
+		case 'expander random': return rules.expanderRand;
+    case 'cloner': return rules.cloner;
+		case 'cloner random': return rules.clonerRand;
+    case 'billow': return rules.billow;
+		case 'billow random': return rules.billowRand;
+    case 'mangler': return rules.mangler;
+    case 'mangler random': return rules.manglerRand;
+    case 'birds': return rules.birds;
+		case 'birds random': return rules.birdsRand;
+    case 'horizons': return rules.horizons;
+		case 'horizons': return rules.horizonsRand;
+		case 'harmony': return rules.harmony;
+		case 'harmony random': return rules.harmony;
+		case 'rockPaperScissors': return rockPaperScissors.rockPaperScissors;
+		case 'rockPaperScissors random': return rockPaperScissors.rockPaperScissorsRand;
+    default: return rules.expander;
   }
 }
 
 function getInitialRuleset() {
-  // const rand = Math.floor( Math.random() * 15 );
-  return rulesJ.set2;
+  const rand = Math.floor( Math.random() * 4 );
+  switch (rand) {
+		case 1: return rules.expander;
+		case 2: return rules.cloner;
+		case 3: return rules.billow;
+		case 4: return rules.unknown;
+		default: return rules.expander;
+	}
 }

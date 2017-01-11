@@ -16,29 +16,37 @@ import Ruleset from './sidebar-components/ruleset';
 class SidebarContainer extends Component {
   constructor () {
     super();
-    this.state = { showExplanation: false, showSidebar: true, sidebarWidth: "220px", sidebarPadding: "0 10px" };
+    this.state = {
+      showExplanation: false,
+      showSidebar: true,
+      sidebarWidth: "220px",
+      sidebarPadding: "0 10px",
+      randomness: false
+    };
     this.toggleExplanation = this.toggleExplanation.bind(this);
     this.changeSpeed = this.changeSpeed.bind(this);
     this.changeColors = this.changeColors.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.changeInitialState = this.changeInitialState.bind(this);
     this.changeRuleset = this.changeRuleset.bind(this);
+    this.smallPause = this.smallPause.bind(this);
+    this.switchRandomness = this.switchRandomness.bind(this);
   }
   toggleExplanation() {
     this.props.pause();
     this.props.explain();
   }
   changeSpeed(newSpeed) {
-    this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
-    this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
+    if (this.props.showExplanation) {
+      this.props.explain();
+      this.props.pause();
+    }
+    else this.smallPause();
 
     this.props.changeColors(newColors);
-
     const showhideStyling = {
       ...this.state.showhideStyling,
       backgroundColor: newColors[0],
@@ -46,17 +54,31 @@ class SidebarContainer extends Component {
     };
     this.setState({ showhideStyling: showhideStyling });
   }
-  changeRuleset(ruleset) {
+  changeRuleset(ruleset, bool = this.state.randomness) {
+    let newRuleset;
+    if (bool) {
+      if (ruleset.includes('random')) newRuleset = ruleset;
+      else newRuleset = ruleset + ' random';
+    }
+    else {
+      if (ruleset.includes('random')) newRuleset = ruleset.replace(' random', '');
+      else newRuleset = ruleset;
+    }
+
+    console.log(newRuleset);
+    this.props.changeRuleset(newRuleset);
+    this.props.cycle(newRuleset);
+  }
+  switchRandomness(bool) {
+    this.setState({ randomness: bool });
+    this.changeRuleset(this.props.ruleset, bool);
+  }
+  smallPause() {
     this.props.pause();
     setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
-
-    this.props.changeRuleset(ruleset);
-    this.props.cycle(ruleset);
   }
   toggleSidebar() {
-    this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
-
+    this.smallPause();
     const showSidebar = !this.state.showSidebar;
     const sidebarWidth = showSidebar ? "220px" : "0";
     const sidebarPadding = showSidebar ? "0 10px" : "0";
@@ -80,8 +102,7 @@ class SidebarContainer extends Component {
     this.setState({ sidebarWidth: sidebarWidth, showSidebar: showSidebar, sidebarPadding: sidebarPadding, showhideStyling: showhideStyling });
   }
   changeInitialState(initial) {
-    this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
+    this.smallPause();
     this.props.newPattern(initial);
   }
   componentWillMount() {
@@ -138,20 +159,18 @@ class SidebarContainer extends Component {
               <InitialState title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState title={'triforce'} onStateClick={ this.changeInitialState } />
             <h3 className="options random">randomness</h3>
-              <div className="option button"> 0 </div>
-              <div className="option button"> + </div>
-              <div className="option button"> +++ </div>
+              <div className="option button" onClick={ ()=> this.switchRandomness(false) } > 0 </div>
+              <div className="option button" onClick={ ()=> this.switchRandomness(true) } > +++ </div>
             <h3 className="options">ruleset</h3>
               <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"harmony"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"cloner"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"floater"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"mangler"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"mangler high R"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"expander medium R"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"birds"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"horizons mediun R"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"birds v2"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"rain"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"horizons"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"rockPaperScissors"} onRulesetClick={ this.changeRuleset } />
         </div>
       </div>
     )
