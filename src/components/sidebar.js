@@ -37,13 +37,16 @@ class SidebarContainer extends Component {
     this.props.explain();
   }
   changeSpeed(newSpeed) {
-    this.smallPause();
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
-    this.smallPause();
-    this.props.changeColors(newColors);
+    if (this.props.showExplanation) {
+      this.props.explain();
+      this.props.pause();
+    }
+    else this.smallPause();
 
+    this.props.changeColors(newColors);
     const showhideStyling = {
       ...this.state.showhideStyling,
       backgroundColor: newColors[0],
@@ -51,11 +54,9 @@ class SidebarContainer extends Component {
     };
     this.setState({ showhideStyling: showhideStyling });
   }
-  changeRuleset(ruleset) {
-    this.smallPause();
-
+  changeRuleset(ruleset, bool = this.state.randomness) {
     let newRuleset;
-    if (this.state.randomness) {
+    if (bool) {
       if (ruleset.includes('random')) newRuleset = ruleset;
       else newRuleset = ruleset + ' random';
     }
@@ -64,14 +65,13 @@ class SidebarContainer extends Component {
       else newRuleset = ruleset;
     }
 
-    console.log(this.state.randomness);
     console.log(newRuleset);
     this.props.changeRuleset(newRuleset);
     this.props.cycle(newRuleset);
   }
   switchRandomness(bool) {
     this.setState({ randomness: bool });
-    this.changeRuleset(this.props.ruleset);
+    this.changeRuleset(this.props.ruleset, bool);
   }
   smallPause() {
     this.props.pause();
