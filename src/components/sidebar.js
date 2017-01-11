@@ -66,7 +66,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "181px"
+      left: "180px"
     };
     const hideStyling = {
       backgroundColor: colors[0],
@@ -90,7 +90,7 @@ class SidebarContainer extends Component {
       backgroundColor: colors[0],
       transition: "0.6s",
       border: `5px solid ${colors[0]}`,
-      left: "181px"
+      left: "180px"
     };
     this.setState({ showhideStyling: showStyling });
   }
@@ -114,7 +114,7 @@ class SidebarContainer extends Component {
         </div>
         <div className="sidebar" style={sidebarStyling}>
           <h1 className="title"> <br /> cellular <br /> automaton </h1>
-          <div className="what-is-this button" onClick={this.toggleExplanation}>
+          <div className="what-is-this button" onClick={ this.toggleExplanation }>
             <h3>what is this?</h3>
           </div>
           <h2 className="user-controls">controls</h2>

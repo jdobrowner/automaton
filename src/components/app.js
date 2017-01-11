@@ -10,9 +10,9 @@ import Explanation from './explanation';
 class App extends Component {
   constructor() {
     super();
-    this.hideExplaination = this.hideExplaination.bind(this);
+    this.hideExplanation = this.hideExplanation.bind(this);
   }
-  hideExplaination() {
+  hideExplanation() {
     if (this.props.showExplanation) {
       this.props.explain();
       this.props.pause();
@@ -20,7 +20,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="app" onClick={ this.hideExplaination }>
+      <div className="app" onClick={ this.hideExplanation }>
         <SidebarContainer />
         <GridContainer />
         <Explanation />
