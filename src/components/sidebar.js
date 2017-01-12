@@ -135,7 +135,7 @@ class SidebarContainer extends Component {
       face: ["m19.76797,13.06663l0.89431,-1.79473l2.38485,0l0.89432,1.79473l-0.89432,1.79474l-2.38485,0l-0.89431,-1.79474z", "m9.93464,13.06663l0.89431,-1.79473l2.38486,0l0.89432,1.79473l-0.89432,1.79474l-2.38486,0l-0.89431,-1.79474z", "m9.25006,21.62497l15.49978,-0.00012"],
       triforce: ["m4.75753,28.38143l12.83329,-21.62494l12.8333,21.62494l-25.66659,0l0,0z", "m11.875,18.02084l11.56243,0.05338l-5.36229,8.86322l-6.20014,-8.9166z"]
     };
-    const whatStyling = {backgroundColor: colors[0], border: `2px solid ${colors[3]}`};
+    const whatStyling = {backgroundColor: colors[0], border: `1px solid ${colors[3]}`};
     let htmlTag = document.getElementsByTagName("HTML")[0];
     htmlTag.style.backgroundColor = colors[0];
     return (
@@ -153,36 +153,36 @@ class SidebarContainer extends Component {
           </div>
           <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options initial-state">initial state</h3>
-              <InitialState colors={colors} drawPath={drawPaths.littleTriangle} title={'little triangle'} onStateClick={ this.changeInitialState }/>
+              <InitialState className="left-margin" colors={colors} drawPath={drawPaths.littleTriangle} title={'little triangle'} onStateClick={ this.changeInitialState }/>
               <InitialState colors={colors} drawPath={drawPaths.nestedTriangle} title={'nested triangle'} onStateClick={ this.changeInitialState } />
               <InitialState colors={colors} drawPath={drawPaths.hexagon} title={'hexagon'} onStateClick={ this.changeInitialState } /> <br />
-              <InitialState colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
+              <InitialState className="left-margin" colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
               <InitialState colors={colors} drawPath={drawPaths.face} title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState colors={colors} drawPath={drawPaths.triforce} title={'triforce'} onStateClick={ this.changeInitialState } />
             <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options">ruleset</h3>
-              <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"harmony"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset title={"billow"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"mangler"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset title={"birds"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"horizons"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset title={"swirls"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset className="left-margin" colors={colors} title={"expander"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset className="left-margin" colors={colors} title={"billow"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset className="left-margin" colors={colors} title={"birds"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset className="left-margin" colors={colors} title={"swirls"} onRulesetClick={ this.changeRuleset } />
             <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options random">randomness</h3>
-              <div className="option button" onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>
-              <div className="option button" onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>
-            <div className="separator" style={{backgroundColor: colors[0]}}></div>
+              <div className="option button left-margin" style={whatStyling} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>
+              <div className="option button" style={whatStyling} onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>
+            <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options speed">speed</h3>
-              <div className="option button" onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>
-              <div className="option button" onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>
-              <div className="option button" onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>
-             <div className="separator" style={{backgroundColor: colors[0]}}></div>
+              <div className="option button left-margin" style={whatStyling} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>
+              <div className="option button" style={whatStyling} onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>
+              <div className="option button" style={whatStyling} onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>
+             <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options color">color</h3>
-              <Swatch colors={colorChoices.green} currentColors={colors} onColorClick={this.changeColors} />
+              <Swatch className="left-margin" colors={colorChoices.green} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.purple} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.southwest} currentColors={colors} onColorClick={this.changeColors} /> <br />
-              <Swatch colors={colorChoices.brights} currentColors={colors} onColorClick={this.changeColors} />
+              <Swatch className="left-margin" colors={colorChoices.brights} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.red} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.ocean} currentColors={colors} onColorClick={this.changeColors} />
         </div>
