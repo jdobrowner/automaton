@@ -27,20 +27,6 @@ function expanderRand(a = 0, b = 0, c = 0, d = 0) {
   else return expander(a,b,c,d);
 }
 
-function cloner(a = 0, b = 0, c = 0, d = 0) {
-  let x = (a + b + c) % 4;
-  return x;
-}
-
-function clonerRand(a = 0, b = 0, c = 0, d = 0) {
-  const rand = Math.random() * 1000;
-
-  if (rand < 0.02) return set4(a,b,c,d);
-  else if (rand < 0.04) set5(a,b,c,d);
-  else if ( rand < 0.06 ) set6(a,b,c,d);
-  else return cloner(a,b,c,d);
-}
-
 function billow(a = 0, b = 0, c = 0, d = 0) {
   let x = (2*b + c + d) % 4;
   return x;
@@ -124,16 +110,7 @@ function horizonsRand(a = 0, b = 0, c = 0, d = 0) {
 		return 3;
 	}
 	else {
-    Math.floor(Math.random() * 2);
-
-    const rand = Math.random();
-
-    if ((a === 0) && (b === 0) && (c === 0) && (d === 0) && (rand < 0.002)) {
-      if (rand < 0.005) return 2;
-      else if (rand < 0.1) return 1;
-      else return 0;
-    }
-    return 0;
+    return Math.floor(Math.random() * 2);
   }
 }
 
@@ -155,7 +132,6 @@ function harmonyRand(a = 0, b = 0, c = 0, d = 0) {
 
 const rulesets = {
   expander, expanderRand,
-  cloner, clonerRand,
   billow, billowRand,
   mangler, manglerRand,
   birds, birdsRand,

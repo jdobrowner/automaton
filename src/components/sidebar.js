@@ -159,13 +159,11 @@ class SidebarContainer extends Component {
             <h3 className="options">ruleset</h3>
               <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"harmony"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset title={"cloner"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"floater"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset title={"billow"} onRulesetClick={ this.changeRuleset } /> <br />
               <Ruleset title={"mangler"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } /> <br />
               <Ruleset title={"birds"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"horizons"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset title={"rockPaperScissors"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"swirls"} onRulesetClick={ this.changeRuleset } />
             <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options random">randomness</h3>
               <div className="option button" onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>

@@ -45,7 +45,7 @@ class Explanation extends Component {
     const closeStyling = {backgroundColor: colors[0], border: `5px solid ${colors[0]}`};
     return (
       <div className={explanation} onClick={ this.hideExplanation } style={{backgroundColor: colors[1]}}>
-        <div className="button close-explanation" style={closeStyling} >
+        <div className="button close-explanation" style={closeStyling} onClick={ this.hideExplanation } >
           <svg height="20" width="20">
             <path d="M2 2 L18 18 M2 18 L18 2" stroke={colors[2]} strokeWidth="4"/>
           </ svg>

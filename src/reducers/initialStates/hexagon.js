@@ -18,13 +18,13 @@ export default () => {
 	const f = size/2;
 
 	if ((n === a) && (m === e)) state[keyUp] = 2;
-	if ((n === b) && (m === e)) state[keyDown] = 3;
-    if ((n === b) && (m === e)) state[keyUp] = 1;
-    if ((n === a) && (m === f)) state[keyDown] = 1;
-    if ((n === b) && (m === f)) state[keyUp] = 3;
-    if ((n === b) && (m === f)) state[keyDown] = 2;
+  	if ((n === b) && (m === e)) state[keyDown] = 3;
+      if ((n === b) && (m === e)) state[keyUp] = 1;
+      if ((n === a) && (m === f)) state[keyDown] = 1;
+      if ((n === b) && (m === f)) state[keyUp] = 3;
+      if ((n === b) && (m === f)) state[keyDown] = 2;
 
-	}
-  }	
+  	}
+  }
   return state;
 }
