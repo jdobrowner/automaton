@@ -17,6 +17,10 @@ export default function cycle(state = initialPattern(), action) {
 	}
 }
 
+function initialPattern() {
+	return initialStates.hexagon();
+}
+
 function newPattern(pattern) {
 	switch (pattern) {
 		case 'border':
@@ -42,30 +46,6 @@ function newPattern(pattern) {
 	}
 }
 
-function initialPattern() {
-	const rand = Math.floor( Math.random() * 8 );
-	switch (rand) {
-		case 0:
-			return initialStates.border();
-		case 1:
-			return initialStates.face();
-		case 2:
-			return initialStates.hexagon();
-		case 3:
-			return initialStates.oneTriangle();
-		case 4:
-			return initialStates.fish();
-		case 5:
-			return initialStates.triangle();
-		case 6:
-			return initialStates.triforce();
-		case 7:
-			return initialStates.nestedTriangle();
-		default:
-			return initialStates.nestedTriangle();
-	}
-}
-
 function getRuleset(ruleset) {
   switch (ruleset) {
     case 'expander': return rules.expander;
@@ -84,17 +64,4 @@ function getRuleset(ruleset) {
 		case 'swirls random': return rockPaperScissors.rockPaperScissorsRand;
     default: return rules.expander;
   }
-}
-
-function getInitialRuleset() {
-  const rand = Math.floor( Math.ceil() * 6 );
-  switch (rand) {
-		case 1: return rules.expander;
-		case 2: return rules.birds;
-		case 3: return rules.billow;
-		case 4: return rules.harmony;
-		case 5: return rules.mangler;
-		case 6: return rockPaperScissors.rockPaperScissors;
-		default: return rules.expander;
-	}
 }
