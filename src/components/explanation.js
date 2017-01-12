@@ -47,7 +47,7 @@ class Explanation extends Component {
       <div className={explanation} onClick={ this.hideExplanation } style={{backgroundColor: colors[1]}}>
         <div className="button close-explanation" style={closeStyling} onClick={ this.hideExplanation } >
           <svg height="20" width="20">
-            <path d="M2 2 L18 18 M2 18 L18 2" stroke={colors[2]} strokeWidth="5"/>
+            <path d="M2 2 L18 18 M2 18 L18 2" stroke={colors[2]} strokeWidth="4"/>
           </ svg>
         </ div>
         <p style={{color: colors[3]}}><span>A cellular automaton is a system of cells</span> that change with each iteration according to a given ruleset. Each cell has an initial state (e.g. 0 or 1) which is updated based on the states of its neighbors. Cellular automaton have been explored since their discovery in the 1940s by Stanislaw Ulam and John von Neumann during their work on the Manhattan Project and more recently by Stephen Wolfram. Originally studied as a model for self-replication, cellular automata have important implications for numerous fields of study, including computability theory, mathematics, physics, and biology.  <br /><br /><br />
