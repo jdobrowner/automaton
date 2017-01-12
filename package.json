@@ -8,12 +8,12 @@
     "start": "npm run build:css && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js & npm run watch:css",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "build:css": "rm -f build/style.css && lessc style/style.less build/style.css",
+    "build:css": "rm -f build/style.css && lessc style/style.less --clean-css build/style.css",
     "watch:css": "chokidar-cmd -c 'npm run build:css' -t style/**/*.less",
     "build:js": "webpack",
     "build:html": "rm -f build/index.html && cp index.html build/",
     "build:images": "cp -r images/* build/",
-    "build": "rm -rf build && mkdir -p build && npm run build:images && npm run build:html && npm run build:css && npm run build:js"
+    "build": "rm -rf build && mkdir -p build && npm run build:html && npm run build:css && npm run build:js"
   },
   "author": "Jason Dobrowner and Monika Zarako-Dobrowner",
   "license": "ISC",
@@ -29,8 +29,10 @@
     "jquery": "^3.1.1",
     "jsdom": "^9.9.1",
     "less": "^2.7.1",
+    "less-plugin-clean-css": "^1.5.1",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.1",
+    "uglify-js": "^2.7.5",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   },

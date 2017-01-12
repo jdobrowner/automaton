@@ -33,11 +33,14 @@ function billow(a = 0, b = 0, c = 0, d = 0) {
 }
 
 function billowRand(a = 0, b = 0, c = 0, d = 0) {
-  const rand = Math.random() * 1000;
+  const rand = Math.random() * 200;
 
-  if (rand < 0.02) return set4(a,b,c,d);
-  else if (rand < 0.04) set5(a,b,c,d);
-  else if ( rand < 0.06 ) set6(a,b,c,d);
+  if ((a === 0) && (b === 0) && (c === 0) && (d === 0) && (rand < 0.002)) {
+    if (rand < 0.0005) return 1;
+    else if (rand < 0.001) return 2;
+    else if (rand < 0.0015) return 3;
+    else return 0;
+  }
   else return billow(a,b,c,d);
 }
 
@@ -76,7 +79,7 @@ function birds(a = 0, b = 0, c = 0, d = 0) {
 }
 
 function birdsRand(a = 0, b = 0, c = 0, d = 0) {
-  const rand = Math.random() * 10;
+  const rand = Math.random() * 20;
 
   if ((a === 0) && (b === 0) && (c === 0) && (d === 0) && (rand < 0.002)) {
     if (rand < 0.0005) return 1;
