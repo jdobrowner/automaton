@@ -20,6 +20,7 @@ class SidebarContainer extends Component {
       showExplanation: false,
       showSidebar: true,
       sidebarWidth: "220px",
+      sidebarPadding: "5px",
       randomness: false,
       initialState: 'hexagon',
       currentRuleset: 'expander',
@@ -33,14 +34,24 @@ class SidebarContainer extends Component {
     this.changeRuleset = this.changeRuleset.bind(this);
     this.smallPause = this.smallPause.bind(this);
     this.switchRandomness = this.switchRandomness.bind(this);
+    this.getRandomnessStyling = this.getRandomnessStyling.bind(this);
+    this.getSpeedStyling = this.getSpeedStyling.bind(this);
+    this.getSelectedRuleset = this.getSelectedRuleset.bind(this);
+    this.getSelectedInitialState = this.getSelectedInitialState.bind(this);
   }
   toggleExplanation() {
     this.props.pause();
     this.props.explain();
+    if (this.props.showExplanation) {
+      this.props.explain();
+      setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
+    }
+
   }
   changeSpeed(newSpeed) {
     this.setState({speed: newSpeed});
     this.props.changeSpeed(newSpeed);
+    this.getSpeedStyling(newSpeed);
   }
   changeColors(newColors) {
     if (this.props.showExplanation) {
@@ -83,6 +94,7 @@ class SidebarContainer extends Component {
     this.smallPause();
     const showSidebar = !this.state.showSidebar;
     const sidebarWidth = showSidebar ? "220px" : "0";
+    const sidebarPadding = showSidebar ? "5px" : "0";
 
     const colors = this.props.colors;
     const showStyling = {
@@ -100,7 +112,7 @@ class SidebarContainer extends Component {
       transition: "0.6s"
     };
     const showhideStyling = showSidebar ? showStyling : hideStyling;
-    this.setState({ sidebarWidth: sidebarWidth, showSidebar: showSidebar, showhideStyling: showhideStyling });
+    this.setState({ sidebarWidth: sidebarWidth, showSidebar: showSidebar, showhideStyling: showhideStyling, sidebarPadding: sidebarPadding });
   }
   changeInitialState(initial) {
     this.smallPause();
@@ -117,13 +129,66 @@ class SidebarContainer extends Component {
     };
     this.setState({ showhideStyling: showStyling });
   }
+  getRandomnessStyling() {
+    const randomness = this.state.randomness;
+    const colors = this.props.colors;
+    const borderStyling = {backgroundColor: colors[0]};
+    const selectedStyling = {backgroundColor: colors[2], color: colors[0]};
+    let f = {...borderStyling};
+    let t = {...borderStyling};
+    switch (randomness) {
+      case false: 
+        f = {...selectedStyling};
+        break;
+      case true: 
+        t = {...selectedStyling};
+        break;  
+    }
+    return (
+      [<div className="option button" style={f} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>,
+      <div className="option button" style={t} onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>]
+      )
+  }
+  getSpeedStyling() {
+  const newSpeed = this.state.speed;
+  const colors = this.props.colors;
+  const borderStyling = {backgroundColor: colors[0]};
+  const selectedStyling = {backgroundColor: colors[2], color: colors[0]};
+  let slow = {...borderStyling};
+  let medium = {...borderStyling};
+  let fast = {...borderStyling};
+  switch (newSpeed) {
+    case 600: 
+      fast = {...selectedStyling};
+      break;
+    case 1000: 
+      medium = {...selectedStyling};
+      break;
+    case 1500: 
+      slow = {...selectedStyling};
+      break;    
+  }
+  return (
+    [<div className="option button" style={slow} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>,
+    <div className="option button" style={medium} onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>,
+    <div className="option button" style={fast} onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>]
+    )
+}
+getSelectedRuleset(title) {
+  if (this.state.currentRuleset === title) return true;
+  else return false;
+}
+getSelectedInitialState(title) {
+  if (this.state.initialState === title) return true;
+  else return false;
+}
   render() {
     const colors = this.props.colors;
     const sidebarStyling = {
       backgroundColor: colors[1],
       color: colors[3],
       width: this.state.sidebarWidth,
-      padding: this.state.sidebarPadding
+      paddingLeft: this.state.sidebarPadding
     };
     const arrowFill = colors[2];
     const drawPaths = {
@@ -135,45 +200,44 @@ class SidebarContainer extends Component {
       face: ["m19.76797,13.06663l0.89431,-1.79473l2.38485,0l0.89432,1.79473l-0.89432,1.79474l-2.38485,0l-0.89431,-1.79474z", "m9.93464,13.06663l0.89431,-1.79473l2.38486,0l0.89432,1.79473l-0.89432,1.79474l-2.38486,0l-0.89431,-1.79474z", "m9.25006,21.62497l15.49978,-0.00012"],
       triforce: ["m4.75753,28.38143l12.83329,-21.62494l12.8333,21.62494l-25.66659,0l0,0z", "m11.875,18.02084l11.56243,0.05338l-5.36229,8.86322l-6.20014,-8.9166z"]
     };
-    const borderStyling = {backgroundColor: colors[0], border: `1px solid ${colors[3]}`};
+    // const borderStyling = {backgroundColor: colors[0], border: `1px solid ${colors[3]}`};
+    // const selectedStyling = {backgroundColor: colors[2], border: `1px solid ${colors[3]}`};
     let htmlTag = document.getElementsByTagName("HTML")[0];
     htmlTag.style.backgroundColor = colors[0];
     return (
       <div className="sidebar-container">
+
         <div className="button" id="show-hide" style={ this.state.showhideStyling } onClick={ this.toggleSidebar }>
           <svg height="20" width="20">
             <path d="M18 2 L2 10 L18 18 Z" fill={arrowFill} />
           </svg>
         </div>
-        <div className="sidebar" style={sidebarStyling}>
 
+        <div className="sidebar" style={sidebarStyling}>
           <h1 className="title"> cellular <br /> automaton </h1>
           <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options initial-state">initial state</h3>
-              <InitialState colors={colors} drawPath={drawPaths.littleTriangle} title={'little triangle'} onStateClick={ this.changeInitialState }/>
-              <InitialState colors={colors} drawPath={drawPaths.nestedTriangle} title={'nested triangle'} onStateClick={ this.changeInitialState } />
-              <InitialState colors={colors} drawPath={drawPaths.hexagon} title={'hexagon'} onStateClick={ this.changeInitialState } /> <br />
-              <InitialState colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
-              <InitialState colors={colors} drawPath={drawPaths.face} title={'face'} onStateClick={ this.changeInitialState } />
-              <InitialState colors={colors} drawPath={drawPaths.triforce} title={'triforce'} onStateClick={ this.changeInitialState } />
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.littleTriangle} title={'little triangle'} onStateClick={ this.changeInitialState }/>
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.nestedTriangle} title={'nested triangle'} onStateClick={ this.changeInitialState } />
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.hexagon} title={'hexagon'} onStateClick={ this.changeInitialState } /> <br />
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.face} title={'face'} onStateClick={ this.changeInitialState } />
+              <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.triforce} title={'triforce'} onStateClick={ this.changeInitialState } />
             <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options">ruleset</h3>
-              <Ruleset colors={colors} title={"expander"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset colors={colors} title={"birds"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } /> 
-              <Ruleset colors={colors} title={"billow"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } /> 
-              <Ruleset colors={colors} title={"swirls"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"expander"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"birds"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"billow"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"swirls"} onRulesetClick={ this.changeRuleset } /> <br />
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } /> 
             <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options random">randomness</h3>
-              <div className="option button" style={borderStyling} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>
-              <div className="option button" style={borderStyling} onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>
+              {this.getRandomnessStyling()}
             <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options speed">speed</h3>
-              <div className="option button" style={borderStyling} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>
-              <div className="option button" style={borderStyling} onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>
-              <div className="option button" style={borderStyling} onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>
+              {this.getSpeedStyling()}
              <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options color">color</h3>
               <Swatch colors={colorChoices.green} currentColors={colors} onColorClick={this.changeColors} />

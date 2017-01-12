@@ -2,7 +2,9 @@ import React from 'react';
 
 export default (props) => {
 	const colors = props.colors;
-	const styling = {backgroundColor: colors[0], border: `1px solid ${colors[3]}`};
+	const regularStyling = {backgroundColor: colors[0]};
+	const selectedStyling = {backgroundColor: colors[2]};
+	const styling = props.isSelected(props.title) ? selectedStyling : regularStyling;
 	const drawPath = props.drawPath;
 	let paths = [];
 	for (let i = 0; i < drawPath.length; i++) {
@@ -18,3 +20,4 @@ export default (props) => {
 		);
 }
 
+// , border: `1px solid ${colors[0]}`
