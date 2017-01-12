@@ -152,7 +152,6 @@ class SidebarContainer extends Component {
               <div className="option button" onClick={ () => this.changeSpeed(600) }> >>> </div>
             <h3 className="options initial-state">initial state</h3>
               <InitialState title={'little triangle'} onStateClick={ this.changeInitialState }/>
-              <InitialState title={'big triangle'} onStateClick={ this.changeInitialState } />
               <InitialState title={'nested triangle'} onStateClick={ this.changeInitialState } />
               <InitialState title={'hexagon'} onStateClick={ this.changeInitialState } />
               <InitialState title={'border'} onStateClick={ this.changeInitialState } />
@@ -164,13 +163,11 @@ class SidebarContainer extends Component {
             <h3 className="options">ruleset</h3>
               <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"harmony"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"cloner"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"floater"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"billow"} onRulesetClick={ this.changeRuleset } />
+              <Ruleset title={"swirls"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"mangler"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"birds"} onRulesetClick={ this.changeRuleset } />
               <Ruleset title={"horizons"} onRulesetClick={ this.changeRuleset } />
-              <Ruleset title={"rockPaperScissors"} onRulesetClick={ this.changeRuleset } />
         </div>
       </div>
     )
