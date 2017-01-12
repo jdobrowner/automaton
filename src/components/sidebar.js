@@ -20,7 +20,10 @@ class SidebarContainer extends Component {
       showExplanation: false,
       showSidebar: true,
       sidebarWidth: "220px",
-      randomness: false
+      randomness: false,
+      initialState: 'hexagon',
+      currentRuleset: 'expander',
+      speed: 1000
     };
     this.toggleExplanation = this.toggleExplanation.bind(this);
     this.changeSpeed = this.changeSpeed.bind(this);
@@ -36,6 +39,7 @@ class SidebarContainer extends Component {
     this.props.explain();
   }
   changeSpeed(newSpeed) {
+    this.setState({speed: newSpeed});
     this.props.changeSpeed(newSpeed);
   }
   changeColors(newColors) {
@@ -54,6 +58,7 @@ class SidebarContainer extends Component {
     this.setState({ showhideStyling: showhideStyling });
   }
   changeRuleset(ruleset, bool = this.state.randomness) {
+    this.setState({currentRuleset: ruleset});
     let newRuleset;
     if (bool) {
       if (ruleset.includes('random')) newRuleset = ruleset;
@@ -63,8 +68,6 @@ class SidebarContainer extends Component {
       if (ruleset.includes('random')) newRuleset = ruleset.replace(' random', '');
       else newRuleset = ruleset;
     }
-
-    console.log(newRuleset);
     this.props.changeRuleset(newRuleset);
     this.props.cycle(newRuleset);
   }
@@ -101,6 +104,7 @@ class SidebarContainer extends Component {
   }
   changeInitialState(initial) {
     this.smallPause();
+    this.setState({initialState: initial});
     this.props.newPattern(initial);
   }
   componentWillMount() {
@@ -142,7 +146,7 @@ class SidebarContainer extends Component {
           </svg>
         </div>
         <div className="sidebar" style={sidebarStyling}>
-          
+
           <h1 className="title"> cellular <br /> automaton </h1>
           <div className="button what-is-this" onClick={ this.toggleExplanation } style={ whatStyling }>
             <p>what is this?</p>
@@ -155,7 +159,7 @@ class SidebarContainer extends Component {
               <InitialState className="left-margin" colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
               <InitialState colors={colors} drawPath={drawPaths.face} title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState colors={colors} drawPath={drawPaths.triforce} title={'triforce'} onStateClick={ this.changeInitialState } />
-            <div className="separator" style={{backgroundColor: colors[0]}}></div>  
+            <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options">ruleset</h3>
               <Ruleset className="left-margin" colors={colors} title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } /> <br />
@@ -180,7 +184,7 @@ class SidebarContainer extends Component {
               <Swatch colors={colorChoices.southwest} currentColors={colors} onColorClick={this.changeColors} /> <br />
               <Swatch className="left-margin" colors={colorChoices.brights} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.red} currentColors={colors} onColorClick={this.changeColors} />
-              <Swatch colors={colorChoices.ocean} currentColors={colors} onColorClick={this.changeColors} /> 
+              <Swatch colors={colorChoices.ocean} currentColors={colors} onColorClick={this.changeColors} />
         </div>
       </div>
     )
