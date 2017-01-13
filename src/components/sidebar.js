@@ -44,7 +44,9 @@ class SidebarContainer extends Component {
     this.props.explain();
     if (this.props.showExplanation) {
       this.props.explain();
-      setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
+      setTimeout(()=>{
+        this.props.pause();
+      }, this.props.speed-10);
     }
 
   }
@@ -58,7 +60,6 @@ class SidebarContainer extends Component {
       this.props.explain();
       this.props.pause();
     }
-    else this.smallPause();
 
     this.props.changeColors(newColors);
     const showhideStyling = {
@@ -88,7 +89,9 @@ class SidebarContainer extends Component {
   }
   smallPause() {
     this.props.pause();
-    setTimeout(()=>{ this.props.pause(); }, this.props.speed-10);
+    setTimeout(()=>{
+      this.props.pause();
+    }, this.props.speed-10);
   }
   toggleSidebar() {
     this.smallPause();
@@ -115,7 +118,6 @@ class SidebarContainer extends Component {
     this.setState({ sidebarWidth: sidebarWidth, showSidebar: showSidebar, showhideStyling: showhideStyling, sidebarPadding: sidebarPadding });
   }
   changeInitialState(initial) {
-    this.smallPause();
     this.setState({initialState: initial});
     this.props.newPattern(initial);
   }
@@ -137,12 +139,12 @@ class SidebarContainer extends Component {
     let f = {...borderStyling};
     let t = {...borderStyling};
     switch (randomness) {
-      case false: 
+      case false:
         f = {...selectedStyling};
         break;
-      case true: 
+      case true:
         t = {...selectedStyling};
-        break;  
+        break;
     }
     return (
       [<div className="option button" style={f} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>,
@@ -158,15 +160,15 @@ class SidebarContainer extends Component {
   let medium = {...borderStyling};
   let fast = {...borderStyling};
   switch (newSpeed) {
-    case 600: 
+    case 600:
       fast = {...selectedStyling};
       break;
-    case 1000: 
+    case 1000:
       medium = {...selectedStyling};
       break;
-    case 1500: 
+    case 1500:
       slow = {...selectedStyling};
-      break;    
+      break;
   }
   return (
     [<div className="option button" style={slow} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>,
@@ -215,7 +217,6 @@ getSelectedInitialState(title) {
 
         <div className="sidebar" style={sidebarStyling}>
           <h1 className="title"> cellular <br /> automaton </h1>
-          <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options initial-state">initial state</h3>
               <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.littleTriangle} title={'little triangle'} onStateClick={ this.changeInitialState }/>
               <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.nestedTriangle} title={'nested triangle'} onStateClick={ this.changeInitialState } />
@@ -223,22 +224,18 @@ getSelectedInitialState(title) {
               <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.border} title={'border'} onStateClick={ this.changeInitialState } />
               <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.face} title={'face'} onStateClick={ this.changeInitialState } />
               <InitialState isSelected={this.getSelectedInitialState} colors={colors} drawPath={drawPaths.triforce} title={'triforce'} onStateClick={ this.changeInitialState } />
-            <div className="separator" style={{backgroundColor: colors[0]}}></div>
             <h3 className="options">ruleset</h3>
               <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"expander"} onRulesetClick={ this.changeRuleset } />
               <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"birds"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"harmony"} onRulesetClick={ this.changeRuleset } />
               <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"billow"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } /> 
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } />
               <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"swirls"} onRulesetClick={ this.changeRuleset } /> <br />
-              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } /> 
-            <div className="separator" style={{backgroundColor: colors[0]}}></div>
+              <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } />
             <h3 className="options random">randomness</h3>
               {this.getRandomnessStyling()}
-            <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options speed">speed</h3>
               {this.getSpeedStyling()}
-             <div className="separator" style={{backgroundColor: colors[0]}}></div>  
             <h3 className="options color">color</h3>
               <Swatch colors={colorChoices.green} currentColors={colors} onColorClick={this.changeColors} />
               <Swatch colors={colorChoices.purple} currentColors={colors} onColorClick={this.changeColors} />
@@ -248,7 +245,7 @@ getSelectedInitialState(title) {
               <Swatch colors={colorChoices.ocean} currentColors={colors} onColorClick={this.changeColors} />
             <div className="button what-is-this" onClick={ this.toggleExplanation } >
               <h2>what is this?</h2>
-            </div>  
+            </div>
         </div>
       </div>
     )
@@ -262,7 +259,8 @@ function mapStateToProps(state) {
     showExplanation: state.showExplanation,
     colors: state.colors,
     ruleset: state.ruleset,
-    speed: state.speed
+    speed: state.speed,
+    paused: state.paused
   }
   return props;
 }
