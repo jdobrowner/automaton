@@ -1,5 +1,10 @@
 @import 'reset.less';
 
+html, body, .container, .app {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Roboto Slab', serif;
   box-sizing: border-box;
@@ -60,9 +65,13 @@ p {
 
 .what-is-this {
   width: 120px;
-  margin: 0 10px 15px 10px;
-  position: absolute;
-  bottom: 0;
+  margin: 30px 10px 30px 10px;
+  padding: 0;
+}
+
+.grid-container {
+  display: flex;
+  align-items: center;
 }
 
 .grid {
@@ -104,10 +113,12 @@ p {
 
 .explanation {
   position: absolute;
-  width: 970px;
-  height: 834px;
+  max-width: 60%;
+  min-height: 100vh;
   align-self: center;
   padding: 90px;
+  z-index: 2;
+  overflow-y: scroll;
 
   .close-explanation {
   position: absolute;
@@ -138,4 +149,8 @@ p {
   width: 12px;
   height: 12px;
   display: inline-block;
+}
+
+@media screen and (max-width: 1000px) {
+  
 }
