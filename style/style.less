@@ -38,6 +38,11 @@ p {
 .app {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+.sidebar-container {
+  
 }
 
 .sidebar {
@@ -54,19 +59,42 @@ p {
 #show-hide {
   position: fixed;
   top: 0;
-  left: 0;
   margin: 0;
   z-index: 2;
+  transition: 0.6s;
+  cursor: pointer;
+}
+
+.show-rotate {
+  left: 181px;
+}
+
+.hide-rotate {
+  left: 0;
+  --msTransform: rotate(180deg);
+  --webkitTransform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.sidebar-hidden {
+  width: 0;
+  padding-left: 0;
+}
+
+.sidebar-shown {
+  width: 220px;
+  padding-left: 5px;
 }
 
 .title {
-  margin: 30px 0 50px 10px;
+  margin: 30px 0 40px 10px;
 }
 
 .what-is-this {
   width: 120px;
-  margin: 30px 10px 30px 10px;
+  margin: 10px 10px 50px 10px;
   padding: 0;
+  cursor: pointer;
 }
 
 .grid-container {
@@ -112,12 +140,14 @@ p {
 }
 
 .explanation {
-  position: absolute;
-  max-width: 60%;
+  position: fixed;
+  top: 0;
+  left: 25%;
+  width: 971px;
   min-height: 100vh;
   align-self: center;
-  padding: 90px;
-  z-index: 2;
+  padding: 100px;
+  z-index: 3;
   overflow-y: scroll;
 
   .close-explanation {
@@ -151,6 +181,20 @@ p {
   display: inline-block;
 }
 
-@media screen and (max-width: 1000px) {
-  
+@media screen and (max-width: 1430px) {
+  .explanation {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-self: flex-start;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .grid {
+    zoom: 0.45;
+  }
+  .explanation {
+    padding: 50px;
+  }
 }
