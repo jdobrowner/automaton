@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import explain from '../actions/toggleExplanation';
 import pause from '../actions/pause';
+import Github from './github';
 
 class Explanation extends Component {
   constructor() {
@@ -62,6 +63,7 @@ class Explanation extends Component {
 
             We hope you enjoy the intricate patterns created by stability and randomness. Be sure to play around with different initial states, rulesets, colors, and adding a little randomness. Have fun!
           </p>
+          <Github color={colors[3]} />
       </div>
     )
   }

@@ -146,7 +146,7 @@ p {
   width: 971px;
   min-height: 100vh;
   align-self: center;
-  padding: 100px;
+  padding: 90px;
   z-index: 3;
   overflow-y: scroll;
 
@@ -167,6 +167,13 @@ p {
   font-family: 'Roboto Slab', serif;
   font-size: 19px;
   }
+
+  .github {
+  width: 160px;
+  zoom: 0.35;
+  margin: 60px auto 0 auto;
+  cursor: pointer;
+  }
 }
 
 .swatch {
@@ -181,6 +188,19 @@ p {
   display: inline-block;
 }
 
+
+@media screen and (max-height: 882px), screen and (max-width: 1030px) {
+  .grid {
+  zoom: 0.7;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .grid {
+  zoom: 0.6;
+  }
+}
+
 @media screen and (max-width: 1430px) {
   .explanation {
     left: 0;
@@ -190,9 +210,15 @@ p {
   }
 }
 
+@media screen and (max-width: 737px) {
+  .grid {
+  zoom: 0.5;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .grid {
-    zoom: 0.45;
+    zoom: 0.3;
   }
   .explanation {
     padding: 50px;
