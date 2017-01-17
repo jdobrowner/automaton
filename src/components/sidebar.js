@@ -38,28 +38,20 @@ class SidebarContainer extends Component {
     this.getSelectedRuleset = this.getSelectedRuleset.bind(this);
     this.getSelectedInitialState = this.getSelectedInitialState.bind(this);
   }
-  toggleExplanation() {
-    this.props.pause();
-    this.props.explain();
-    if (this.props.showExplanation) {
-      this.props.explain();
-      setTimeout(()=>{
-        this.props.pause();
-      }, this.props.speed-10);
-    }
-
-  }
   changeSpeed(newSpeed) {
     this.setState({speed: newSpeed});
     this.props.changeSpeed(newSpeed);
     this.getSpeedStyling(newSpeed);
+  }
+  changeInitialState(initial) {
+    this.setState({initialState: initial});
+    this.props.newPattern(initial);
   }
   changeColors(newColors) {
     if (this.props.showExplanation) {
       this.props.explain();
       this.props.pause();
     }
-
     this.props.changeColors(newColors);
     const showhideStyling = {
       ...this.state.showhideStyling,
@@ -75,15 +67,11 @@ class SidebarContainer extends Component {
       else newRuleset = ruleset + ' random';
     }
     else {
-      if (ruleset.includes('random')) newRuleset = ruleset.replace(' random', ''); 
+      if (ruleset.includes('random')) newRuleset = ruleset.replace(' random', '');
       else newRuleset = ruleset;
     }
     this.props.changeRuleset(newRuleset);
     this.props.cycle(newRuleset);
-  }
-  switchRandomness(bool) {
-    this.setState({ randomness: bool });
-    this.changeRuleset(this.props.ruleset, bool);
   }
   smallPause() {
     this.props.pause();
@@ -98,9 +86,19 @@ class SidebarContainer extends Component {
     const showhideClass = showSidebar ? "show-rotate" : "hide-rotate";
     this.setState({ sidebarSize: sidebarSize, showSidebar: showSidebar, showhideClass: showhideClass});
   }
-  changeInitialState(initial) {
-    this.setState({initialState: initial});
-    this.props.newPattern(initial);
+  toggleExplanation() {
+    this.props.pause();
+    this.props.explain();
+    if (this.props.showExplanation) {
+      this.props.explain();
+      setTimeout(()=>{
+        this.props.pause();
+      }, this.props.speed-10);
+    }
+  }
+  switchRandomness(bool) {
+    this.setState({ randomness: bool });
+    this.changeRuleset(this.props.ruleset, bool);
   }
   getRandomnessStyling() {
     const randomness = this.state.randomness;
