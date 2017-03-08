@@ -43,7 +43,7 @@ Created with initial state: Hexagon and ruleset: Swirls (with hidden sidebar)
 
 You can add your own ruleset and see what happens!
 
-## steps
+### steps
 
 1.  Make a new file in the src/reducers/rulesets folder named rules-YOUR_NAME.js
 
