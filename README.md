@@ -7,15 +7,12 @@ Cellular Automaton is an explorative site that lets users create unique visual p
 Created with initial state: Nested Triangle and ruleset: Expander
 
 
-
 ![Alt text](images/triforce-mangler.png?raw=true)
 Created with initial state: Triforce and ruleset: Mangler (with randomness)
 
 
-
 ![Alt text](images/border-harmony.png?raw=true)
 Created with initial state: Border and ruleset: Harmony (with hidden sidebar)
-
 
 
 ![Alt text](images/hexagon-swirls.png?raw=true)
@@ -45,19 +42,19 @@ You can add your own ruleset and see what happens!
 
 ### steps
 
-1.  Make a new file in the src/reducers/rulesets folder named rules-YOUR_NAME.js
+1.  Make a new file in the `src/reducers/rulesets` folder named rules-YOUR_NAME.js
 
-2.  Make a rule! Each cell refers to  itself as "a". The three neighboring cells are "b", "c", and "d". The values of a, b, c, and d are always either 0, 1, 2, or 3, where each number will to a different color. The return value will be the next value of "a". Make sure that your function returns only either 0, 1, 2, or 3! Name your function and export it. Optional: Make a randomized version of the rule
+2.  Make a rule! Each cell refers to  itself as `a`. The three neighboring cells are `b`, `c`, and `d`. The values of `a`, `b`, `c`, and `d` are always either `0`, `1`, `2`, or `3`, where each number will to a different color. The return value will be the next value of `a`. Make sure that your function returns only either 0, 1, 2, or 3! Name your function and export it. Optional: Make a randomized version of the rule
 
-3. Import rules-YOUR_NAME.js into the cycle.js file in src/reducers.
+3. Import rules-YOUR_NAME.js into the cycle.js file in `src/reducers`.
 
-4. In cycle.js, add a case to the switch statement in the "getRuleset" function. Give a string value "NEW_RULE_NAME" in the case argument that will be paired with the new rule, which should be the return value in the case.
+4. In cycle.js, add a case to the switch statement in the `getRuleset` function. Give a string value `NEW_RULE_NAME` in the case argument that will be paired with the new rule, which should be the return value in the case.
 
-5. Add a "NEW_RULE_NAME" + " random" case the the switch statement, that returns the randomized version of the rule. If you did not make a randomized version, then just return your new rule from the case ""NEW_RULE_NAME random".
+5. Add a `NEW_RULE_NAME` + ` random` case the the switch statement, that returns the randomized version of the rule. If you did not make a randomized version, then just return your new rule from the case `NEW_RULE_NAME random`.
 
-6. Navigate to src/components/sidebar.js. In the render method find the Rulset components. Add a new Ruleset Component and change the "title" prop to the string value you put in the case argument from step 4.
+6. Navigate to `src/components/sidebar.js`. In the render method find the Rulset components. Add a new Ruleset Component and change the `title` prop to the string value you put in the case argument from step 4.
 
-There will now be a new button in the sidebar with the value "NEW_RULE_NAME" in it, and when it is clicked the new rule will be applied.
+There will now be a new button in the sidebar with the value `NEW_RULE_NAME` in it, and when it is clicked the new rule will be applied.
 
 
 
