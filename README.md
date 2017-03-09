@@ -38,7 +38,7 @@ Created with initial state: Hexagon and ruleset: Swirls (with hidden sidebar)
 
 ## add a ruleset
 
-You can add your own ruleset and see what happens!
+You can add your own ruleset and see what happens! Clone the repository, `npm install` and `npm start` to run the dev server.
 
 ### steps
 
