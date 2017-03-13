@@ -108,8 +108,8 @@ class SidebarContainer extends Component {
     const on = randomness ? {...selectedStyling} : {...borderStyling};
     const off = !randomness ? {...selectedStyling} : {...borderStyling};
     return (
-      [<div className="option button" style={off} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>,
-      <div className="option button" style={on} onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>]
+      [<div className="option button" key="random-off" style={off} onClick={ ()=> this.switchRandomness(false) } ><p>off</p></div>,
+      <div className="option button" key="random-on" style={on} onClick={ ()=> this.switchRandomness(true) } ><p>on</p></div>]
       )
   }
   getSpeedStyling() {
@@ -132,9 +132,9 @@ class SidebarContainer extends Component {
       break;
   }
   return (
-    [<div className="option button" style={slow} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>,
-    <div className="option button" style={medium} onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>,
-    <div className="option button" style={fast} onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>]
+    [<div className="option button" key="slow" style={slow} onClick={ () => this.changeSpeed(1500) }> <p>slow</p> </div>,
+    <div className="option button" key="medium" style={medium} onClick={ () => this.changeSpeed(1000) }> <p>medium</p> </div>,
+    <div className="option button" key="fast" style={fast} onClick={ () => this.changeSpeed(600) }> <p>fast</p> </div>]
     )
 }
 getSelectedRuleset(title) {
