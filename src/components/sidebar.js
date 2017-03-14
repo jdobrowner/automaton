@@ -195,6 +195,9 @@ render() {
             <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"mangler"} onRulesetClick={ this.changeRuleset } />
             <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"swirls"} onRulesetClick={ this.changeRuleset } /> <br />
             <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"horizons"} onRulesetClick={ this.changeRuleset } />
+            <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"b direction"} onRulesetClick={ this.changeRuleset } /> <br />
+            <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"c direction"} onRulesetClick={ this.changeRuleset } />
+            <Ruleset isSelected={this.getSelectedRuleset} colors={colors} title={"d direction"} onRulesetClick={ this.changeRuleset } />
           <h3 className="options random">randomness</h3>
             {this.getRandomnessStyling()}
           <h3 className="options speed">speed</h3>

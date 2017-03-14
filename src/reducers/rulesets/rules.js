@@ -1,15 +1,15 @@
 // 2/3 pi
-function set4(a = 0, b = 0, c = 0, d = 0) {
+function bDirection(a = 0, b = 0, c = 0, d = 0) {
   return b;
 }
 
 // 2 pi
-function set5(a = 0, b = 0, c = 0, d = 0) {
+function cDirection(a = 0, b = 0, c = 0, d = 0) {
   return c;
 }
 
 // 4/3 pi
-function set6(a = 0, b = 0, c = 0, d = 0) {
+function dDirection(a = 0, b = 0, c = 0, d = 0) {
   return d;
 }
 
@@ -139,7 +139,8 @@ const rulesets = {
   mangler, manglerRand,
   birds, birdsRand,
   horizons, horizonsRand,
-  harmony, harmonyRand
+  harmony, harmonyRand,
+  bDirection, cDirection, dDirection
 };
 
 export default rulesets;
