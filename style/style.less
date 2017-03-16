@@ -42,7 +42,7 @@ p {
 }
 
 .sidebar-container {
-  
+
 }
 
 .sidebar {
@@ -100,6 +100,7 @@ p {
 .grid-container {
   display: flex;
   align-items: center;
+  height: 100vh;
 }
 
 .grid {
@@ -170,8 +171,8 @@ p {
 
   .github {
   width: 160px;
-  zoom: 0.35;
-  margin: 60px auto 0 auto;
+  transform: scale(0.35);
+  margin: 0 auto;
   cursor: pointer;
   }
 }
@@ -189,15 +190,21 @@ p {
 }
 
 
+@media screen and (max-width: 2500px) {
+  .grid {
+    transform: scale(0.9);
+  }
+}
+
 @media screen and (max-height: 882px), screen and (max-width: 1030px) {
   .grid {
-  zoom: 0.7;
+  transform: scale(0.7);
   }
 }
 
 @media screen and (max-height: 700px) {
   .grid {
-  zoom: 0.6;
+  transform: scale(0.6);
   }
 }
 
@@ -212,13 +219,13 @@ p {
 
 @media screen and (max-width: 737px) {
   .grid {
-  zoom: 0.5;
+  transform: scale(0.5);
   }
 }
 
 @media screen and (max-width: 500px) {
   .grid {
-    zoom: 0.3;
+    transform: scale(0.3);
   }
   .explanation {
     padding: 50px;
