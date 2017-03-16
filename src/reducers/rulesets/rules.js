@@ -139,8 +139,7 @@ const rulesets = {
   mangler, manglerRand,
   birds, birdsRand,
   horizons, horizonsRand,
-  harmony, harmonyRand,
-  bDirection, cDirection, dDirection
+  harmony, harmonyRand
 };
 
 export default rulesets;

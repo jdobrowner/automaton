@@ -62,12 +62,6 @@ function getRuleset(ruleset) {
 		case 'harmony random': return rules.harmony;
 		case 'swirls': return rockPaperScissors.rockPaperScissors;
 		case 'swirls random': return rockPaperScissors.rockPaperScissorsRand;
-		case 'b direction': return rules.bDirection;
-		case 'b direction random': return rules.bDirection;
-		case 'c direction': return rules.cDirection;
-		case 'c direction random': return rules.cDirection;
-		case 'd direction': return rules.dDirection;
-		case 'd direction random': return rules.dDirection;
     default: return rules.expander;
   }
 }
