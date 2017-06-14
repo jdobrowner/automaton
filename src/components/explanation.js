@@ -55,15 +55,16 @@ class Explanation extends Component {
 
           <span>The simplest model of a cellular automaton is a 1D collection</span> of square cells in a row, each of which has a state of either 0 (white) or 1 (black). In this <a style={{color: colors[3]}} target="blank" href="http://mathworld.wolfram.com/ElementaryCellularAutomaton.html">model</a>, each cell has two neighbors– one to its left and one to its right. The cells' states change according to a set of rules. For example, if the current cell state is 0, its left neighbor's state is 0, and its right neighbor's state is 1, change the current cell state to 1. For this most simple model, there exist 256 possible rulesets/combinations, creating a variety of visual patterns. <br /><br /><br />
 
-          <span>Our cellular automaton features a triangular grid</span> in which each cell can have one of four states– expressed visually by color. Every cell has three adjacent neighbors which share a border. Because the grid is finite, cells on the edge appear to lack a neighbor. To solve this issue, edge cells are programmed to wrap around the x- and y- axis to find their neighbors on the other side, creating a <a style={{color: colors[3]}} target="blank" href="https://www.google.com/search?q=torus&espv=2&biw=2024&bih=982&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjWm_3awbjRAhXorFQKHfvXB6QQ_AUIBigB">torus-shaped</a> system of cells. After calulating its next state based on its current state and the state of its three neighbors, each cell updates its color accordingly. <br /><br /><br />
+          <span>Our cellular automaton features a square grid with triangular cells,</span> in which each cell can have one of four states– expressed visually by color. Every cell has three adjacent neighbors which share a border. Because the grid is finite, cells on the edge appear to lack a neighbor. To solve this issue, edge cells are programmed to wrap around the x- and y- axis to find their neighbors on the other side, creating a <a style={{color: colors[3]}} target="blank" href="https://www.google.com/search?q=torus&espv=2&biw=2024&bih=982&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjWm_3awbjRAhXorFQKHfvXB6QQ_AUIBigB">torus-shaped</a> system of cells. After calculating its next state based on its current state and the state of its three neighbors, each cell updates its color accordingly. <br /><br /><br />
 
           If you'd like to read more about cellular automata, here are some resources: <br />
             <a style={{color: colors[3]}} target="blank" href="https://en.wikipedia.org/wiki/Cellular_automaton">Wikipedia: Cellular Automaton</a> <br />
             <a style={{color: colors[3]}} target="blank" href="http://natureofcode.com/book/chapter-7-cellular-automata/">Daniel Shiffman: The Nature of Code</a> <br /><br /><br />
 
             We hope you enjoy the intricate patterns created by stability and randomness. Be sure to play around with different initial states, rulesets, colors, and adding a little randomness. Have fun!
-          </p>
-          <Github color={colors[3]} />
+          </p><br /><br /><br />
+          {/* <Github color={colors[3]} /> */}
+          <a className="oko" style={{color: colors[3]}} target="blank" href="http://studiooko.co/">Made by <span>Studio OKO</span></a>
       </div>
     )
   }
