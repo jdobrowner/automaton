@@ -13,7 +13,8 @@
     "build:js": "webpack",
     "build:html": "rm -f build/index.html && cp index.html build/",
     "build:favicons": "cp -r favicons/* build/",
-    "build": "rm -rf build && mkdir -p build && npm run build:html && npm run build:css && npm run build:favicons && npm run build:js"
+    "build": "rm -rf build && mkdir -p build && npm run build:html && npm run build:css && npm run build:favicons && npm run build:js",
+    "deploy": "npm run build && cd build && echo | surge --domain cellularautomaton.science"
   },
   "author": "Jason Dobrowner and Monika Zarako-Dobrowner",
   "license": "ISC",

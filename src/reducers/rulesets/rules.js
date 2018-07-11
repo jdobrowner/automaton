@@ -1,3 +1,6 @@
+import { set4, set5, set6 } from './rules-jason';
+// const { set4, set5, set6 }
+
 // 2/3 pi
 function bDirection(a = 0, b = 0, c = 0, d = 0) {
   return b;
